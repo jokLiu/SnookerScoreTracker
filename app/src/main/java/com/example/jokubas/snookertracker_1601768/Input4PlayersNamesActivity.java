@@ -18,10 +18,10 @@ public class Input4PlayersNamesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_input4_players_names);
     }
 
-    public void onClickPlay(View v){
+    public void onClickPlayMulti(View v){
         // call the main function for playing the game
         // which contains the grid of all buttons and scores
-        Intent intent = new Intent(Input4PlayersNamesActivity.this, MainGameActivity.class);
+        Intent intent = new Intent(Input4PlayersNamesActivity.this, MainGameMultiActivity.class);
 
 //        EditText n1 = (EditText) findViewById(R.id.name1);
 //        EditText n2 = (EditText) findViewById(R.id.name2);

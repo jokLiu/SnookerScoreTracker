@@ -78,7 +78,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="@drawable/play"
-        android:onClick="onClickPlay" />
+        android:onClick="onClickPlayMulti" />
 
     <ImageButton
         android:id="@+id/imageButton"

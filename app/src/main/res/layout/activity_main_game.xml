@@ -1,18 +1,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/table">
 
 
     <TextView
         android:id="@+id/player1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="32dp"
-        android:text="Player 1 Score"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="61dp"
+        android:layout_toStartOf="@+id/green"
+        android:background="@null"
+        android:text="Player 1"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
         android:typeface="monospace" />
 
     <TextView
@@ -21,134 +26,179 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/player1"
         android:layout_alignBottom="@+id/player1"
+        android:layout_toStartOf="@+id/score2"
+        android:text="Player 2"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        android:background="@null"/>
+
+
+
+    <Button
+        android:id="@+id/red"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/blue"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="28dp"
+        android:background="@drawable/red1"
+        android:onClick="onClick"
+        android:text="1"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/yellow"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/score1"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="80dp"
+        android:layout_toEndOf="@+id/red"
+        android:background="@drawable/yellow1"
+        android:onClick="onClick"
+        android:text="2"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/green"
+        android:layout_alignTop="@+id/yellow"
+        android:layout_marginStart="28dp"
+        android:layout_toEndOf="@+id/yellow"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/green1"
+        android:onClick="onClick"
+        android:text="3"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/brown"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/blue"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="51dp"
-        android:text="Player 2 Score" />
+        android:layout_marginEnd="25dp"
+        android:background="@drawable/brown1"
+        android:onClick="onClick"
+        android:text="4"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/blue"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/yellow"
+        android:layout_marginTop="33dp"
+        android:layout_toStartOf="@+id/yellow"
+        android:background="@drawable/blue1"
+        android:onClick="onClick"
+        android:text="5"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/pink"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_above="@+id/button_next_player"
+        android:layout_toStartOf="@+id/green"
+        android:background="@drawable/pink1"
+        android:onClick="onClick"
+        android:text="6"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/black"
+        android:layout_alignStart="@+id/green"
+        android:layout_alignTop="@+id/pink"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/black1"
+        android:onClick="onClick"
+        android:text="7"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_foul"
+        android:layout_alignStart="@+id/brown"
+        android:layout_alignTop="@+id/black"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/white1"
+        android:onClick="onClick"
+        android:text="Foul"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_next_player"
+        android:layout_width="190dp"
+        android:layout_height="80dp"
+        android:layout_alignStart="@+id/blue"
+        android:layout_below="@+id/blue"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/next" />
+
+    <Button
+        android:id="@+id/button_frame_end"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:layout_alignEnd="@+id/button_foul"
+        android:layout_alignTop="@+id/button_next_player"
+        android:background="@drawable/end"/>
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignEnd="@+id/yellow"
+        android:layout_below="@+id/player1"
+        android:layout_marginTop="22dp"
+        android:background="@null"
+        app:srcCompat="@drawable/p1" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignTop="@+id/imageView8"
+        android:layout_toEndOf="@+id/button_next_player"
+        android:background="@null"
+        app:srcCompat="@drawable/p2" />
 
     <TextView
         android:id="@+id/score1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/player1"
-        android:layout_below="@+id/player1"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="51dp"
-        android:text="0" />
+        android:layout_alignBottom="@+id/imageView8"
+        android:layout_alignEnd="@+id/imageView8"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/score2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/player2"
-        android:layout_alignTop="@+id/score1"
-        android:layout_marginEnd="14dp"
-        android:text="0" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/score1"
-        android:layout_marginBottom="195dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/red_ball"
-        android:onClick="onClick"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_alignTop="@+id/button"
-        android:layout_marginStart="20dp"
-        android:layout_toEndOf="@+id/player1"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/red_ball"
-        android:onClick="onClick"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"/>
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_alignTop="@+id/button2"
-        android:layout_marginStart="28dp"
-        android:layout_toEndOf="@+id/button2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/red_ball"
-        android:onClick="onClick"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_above="@+id/button5"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="25dp"
-        android:background="@drawable/red_ball"
-        android:onClick="onClick"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button5"
-        android:layout_alignStart="@+id/button"
-        android:layout_below="@+id/button2"
-        android:layout_marginTop="34dp"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/red_ball"
-        android:onClick="onClick"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button6"
-        android:layout_alignBottom="@+id/button5"
-        android:layout_alignStart="@+id/button2"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/red_ball"
-        android:onClick="onClick"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button7"
-        android:layout_alignStart="@+id/button3"
-        android:layout_alignTop="@+id/button6"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/red_ball"
-        android:onClick="onClick"
-        android:text="1"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_alignStart="@+id/button4"
-        android:layout_alignTop="@+id/button7"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/red_ball"
-        android:onClick="onClick"
-        android:text="1"
+        android:layout_alignBottom="@+id/imageView9"
+        android:layout_alignEnd="@+id/imageView9"
+        android:text="0"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />

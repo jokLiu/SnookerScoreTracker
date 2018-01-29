@@ -21,6 +21,8 @@ public class PlayersSelectionActivity extends AppCompatActivity {
     }
 
     public void on4PlayersClick(View view){
+        Intent intent = new Intent(PlayersSelectionActivity.this, Input4PlayersNamesActivity.class);
+        startActivity(intent);
         // should turn on the window with 4 names to input
     }
 }

@@ -32,13 +32,13 @@
         android:id="@+id/imageButton3"
         android:layout_width="110dp"
         android:layout_height="240dp"
-        android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/imageButton4"
-        android:layout_marginEnd="17dp"
+        android:layout_marginStart="40dp"
+        android:layout_toEndOf="@+id/imageButton4"
         android:background="@null"
+        android:onClick="on2PlayersClick"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/players2"
-        android:onClick="on2PlayersClick"/>
+        app:srcCompat="@drawable/players2" />
 
     <ImageButton
         android:id="@+id/imageButton4"
@@ -66,10 +66,11 @@
         android:layout_height="50dp"
         android:layout_above="@+id/imageButton3"
         android:layout_alignParentEnd="true"
+        android:layout_marginEnd="19dp"
         android:background="@null"
+        android:onClick="on2PlayersClick"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/play2"
-        android:onClick="on2PlayersClick"/>
+        app:srcCompat="@drawable/play2" />
 
     <ImageButton
         android:id="@+id/imageButton6"

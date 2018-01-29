@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Locale;
@@ -33,6 +34,10 @@ public class MainGameActivity extends AppCompatActivity {
         n2.setText(pName2);
 
         score = new ScoreTracker(pName1, pName2);
+
+        Button b = (Button) findViewById(R.id.red);
+        b.setEnabled(false);
+        b.setAlpha(0.5f);
 
     }
 

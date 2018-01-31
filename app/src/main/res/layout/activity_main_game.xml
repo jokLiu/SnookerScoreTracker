@@ -6,7 +6,7 @@
 
 
     <TextView
-        android:id="@+id/player1"
+        android:id="@+id/player1_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,11 +20,11 @@
         android:typeface="monospace" />
 
     <TextView
-        android:id="@+id/player2"
+        android:id="@+id/player3_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/player1"
-        android:layout_alignBottom="@+id/player1"
+        android:layout_alignBaseline="@+id/player1_name"
+        android:layout_alignBottom="@+id/player1_name"
         android:layout_alignStart="@+id/button_next_player"
         android:layout_marginStart="23dp"
         android:background="@null"
@@ -39,7 +39,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_alignStart="@+id/blue"
-        android:layout_below="@+id/score1"
+        android:layout_below="@+id/score2_tm1"
         android:layout_marginTop="30dp"
         android:background="@drawable/red1"
         android:onClick="onClick"
@@ -52,7 +52,7 @@
         android:id="@+id/yellow"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignEnd="@+id/score1"
+        android:layout_alignEnd="@+id/score2_tm1"
         android:layout_alignTop="@+id/red"
         android:layout_marginTop="69dp"
         android:background="@drawable/yellow1"
@@ -120,7 +120,7 @@
         android:id="@+id/black"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignStart="@+id/imageView8"
+        android:layout_alignStart="@+id/p1_image"
         android:layout_below="@+id/brown"
         android:background="@drawable/black1"
         android:onClick="onClick"
@@ -159,7 +159,7 @@
         android:id="@+id/button_frame_end"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_alignEnd="@+id/score2"
+        android:layout_alignEnd="@+id/score3_tm2"
         android:layout_below="@+id/pink"
         android:background="@drawable/white1"
         android:text="End"
@@ -168,31 +168,31 @@
         android:textStyle="bold|italic"/>
 
     <ImageView
-        android:id="@+id/imageView8"
+        android:id="@+id/p1_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_below="@+id/player1"
+        android:layout_below="@+id/player1_name"
         android:layout_marginEnd="11dp"
         android:layout_toStartOf="@+id/button_next_player"
         android:background="@null"
         app:srcCompat="@drawable/p1" />
 
     <ImageView
-        android:id="@+id/imageView9"
+        android:id="@+id/p2_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_alignStart="@+id/button_next_player"
-        android:layout_alignTop="@+id/imageView8"
+        android:layout_alignTop="@+id/p1_image"
         android:layout_marginStart="1dp"
         android:background="@null"
         app:srcCompat="@drawable/p2" />
 
     <TextView
-        android:id="@+id/score1"
+        android:id="@+id/score2_tm1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView8"
-        android:layout_alignEnd="@+id/imageView8"
+        android:layout_alignBottom="@+id/p1_image"
+        android:layout_alignEnd="@+id/p1_image"
         android:text="0"
         android:textColor="@color/white"
         android:textSize="40sp"
@@ -200,11 +200,11 @@
         android:background="@null"/>
 
     <TextView
-        android:id="@+id/score2"
+        android:id="@+id/score3_tm2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView9"
-        android:layout_alignEnd="@+id/imageView9"
+        android:layout_alignBottom="@+id/p2_image"
+        android:layout_alignEnd="@+id/p2_image"
         android:text="0"
         android:textColor="@color/white"
         android:textSize="40sp"

@@ -23,15 +23,15 @@ public class Input4PlayersNamesActivity extends AppCompatActivity {
         // which contains the grid of all buttons and scores
         Intent intent = new Intent(Input4PlayersNamesActivity.this, MainGameMultiActivity.class);
 
-//        EditText n1 = (EditText) findViewById(R.id.name1);
-//        EditText n2 = (EditText) findViewById(R.id.name2);
-//        EditText n3 = (EditText) findViewById(R.id.name3);
-//        EditText n4 = (EditText) findViewById(R.id.name4);
-//
-//        intent.putExtra(name1, n1.getText().toString());
-//        intent.putExtra(name2, n2.getText().toString());
-//        intent.putExtra(name3, n3.getText().toString());
-//        intent.putExtra(name4, n4.getText().toString());
+        EditText n1 = (EditText) findViewById(R.id.name1_t1);
+        EditText n2 = (EditText) findViewById(R.id.name2_t1);
+        EditText n3 = (EditText) findViewById(R.id.name3_t2);
+        EditText n4 = (EditText) findViewById(R.id.name4_t2);
+
+        intent.putExtra(name1, n1.getText().toString());
+        intent.putExtra(name2, n2.getText().toString());
+        intent.putExtra(name3, n3.getText().toString());
+        intent.putExtra(name4, n4.getText().toString());
 
         startActivity(intent);
     }

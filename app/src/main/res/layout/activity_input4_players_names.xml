@@ -25,10 +25,10 @@
 
 
     <EditText
-        android:id="@+id/name1"
+        android:id="@+id/name1_t1"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/name"
+        android:layout_alignStart="@+id/name3_t2"
         android:layout_below="@+id/imageButton10"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
@@ -36,30 +36,30 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/name3"
+        android:id="@+id/name2_t1"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageButton10"
-        android:layout_toEndOf="@+id/name"
+        android:layout_toEndOf="@+id/name3_t2"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
         android:hint="Player 1"
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/name3_t2"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageButton"
         android:layout_marginEnd="17dp"
-        android:layout_toStartOf="@+id/name2"
+        android:layout_toStartOf="@+id/name4_t2"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
-        android:hint="Player 1"
+        android:hint="Player 3"
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/name2"
+        android:id="@+id/name4_t2"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/play_button"
@@ -68,7 +68,7 @@
         android:layout_marginEnd="23dp"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
-        android:hint="Player 2"
+        android:hint="Player 4"
         android:inputType="text" />
 
     <Button
@@ -84,9 +84,9 @@
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/name2"
+        android:layout_above="@+id/name4_t2"
         android:layout_marginEnd="39dp"
-        android:layout_toStartOf="@+id/name2"
+        android:layout_toStartOf="@+id/name4_t2"
         android:background="@null"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/p1" />
@@ -105,8 +105,8 @@
         android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/name2"
-        android:layout_alignStart="@+id/name2"
+        android:layout_above="@+id/name4_t2"
+        android:layout_alignStart="@+id/name4_t2"
         android:layout_marginStart="14dp"
         android:background="@null"
         android:scaleType="fitXY"

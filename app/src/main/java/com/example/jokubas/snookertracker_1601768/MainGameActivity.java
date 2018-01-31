@@ -11,7 +11,7 @@ import java.util.Locale;
 
 public class MainGameActivity extends AppCompatActivity {
 
-    private ScoreTracker score;
+    private ScoreTrackSingle score;
     private TextView p1score;
     private TextView p2score;
 
@@ -25,16 +25,19 @@ public class MainGameActivity extends AppCompatActivity {
         String pName1 = intent.getStringExtra(Input2PlayersNamesActivity.name1);
         String pName2 = intent.getStringExtra(Input2PlayersNamesActivity.name2);
 
-        TextView n1 = (TextView) findViewById(R.id.player1);
-        TextView n2 = (TextView) findViewById(R.id.player2);
-        p1score = (TextView) findViewById(R.id.score1);
-        p2score = (TextView) findViewById(R.id.score2);
+        TextView n1 = (TextView) findViewById(R.id.player1_name);
+        TextView n2 = (TextView) findViewById(R.id.player3_name);
 
         n1.setText(pName1);
         n2.setText(pName2);
 
-        score = new ScoreTracker(pName1, pName2);
+        p1score = (TextView) findViewById(R.id.score2_tm1);
+        p2score = (TextView) findViewById(R.id.score3_tm2);
 
+        score = new ScoreTrackSingle(pName1, pName2);
+
+
+        // TODO remove
         Button b = (Button) findViewById(R.id.red);
         b.setEnabled(false);
         b.setAlpha(0.5f);

@@ -4,30 +4,6 @@
     android:layout_height="match_parent">
 
 
-    <!--<Button-->
-        <!--android:id="@+id/button"-->
-        <!--style="@android:style/Theme.Material"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_above="@+id/imageButton4"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_marginBottom="37dp"-->
-        <!--android:layout_marginStart="68dp"-->
-        <!--android:onClick="on2PlayersClick"-->
-        <!--android:text="2 Players" />-->
-
-    <!--<Button-->
-        <!--android:id="@+id/button2"-->
-        <!--style="@android:style/Theme.Material"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignBaseline="@+id/button"-->
-        <!--android:layout_alignBottom="@+id/button"-->
-        <!--android:layout_marginStart="34dp"-->
-        <!--android:layout_toEndOf="@+id/imageButton4"-->
-        <!--android:onClick="on4PlayersClick"-->
-        <!--android:text="4 Players" />-->
-
     <ImageButton
         android:id="@+id/imageButton3"
         android:layout_width="110dp"
@@ -60,39 +36,30 @@
         android:background="@null"
         app:srcCompat="@drawable/snooker3" />
 
-    <ImageButton
+    <Button
         android:id="@+id/imageButton5"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_above="@+id/imageButton3"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="19dp"
-        android:background="@null"
+        android:background="@drawable/play2_selector"
         android:onClick="on2PlayersClick"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/play2" />
 
-    <ImageButton
+    <Button
         android:id="@+id/imageButton6"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_above="@+id/imageButton4"
         android:layout_alignEnd="@+id/imageButton4"
         android:layout_marginEnd="38dp"
-        android:background="@null"
+        android:background="@drawable/play4_selector"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/play4"
         android:onClick="on4PlayersClick"/>
 
-    <!--<ImageView-->
-        <!--android:id="@+id/imageView3"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_above="@+id/imageButton5"-->
-        <!--android:layout_alignParentStart="true"-->
-        <!--android:layout_marginBottom="18dp"-->
-        <!--android:background="@null"-->
-        <!--app:srcCompat="@drawable/top" />-->
 
     <ImageView
         android:id="@+id/imageView4"

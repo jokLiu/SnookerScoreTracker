@@ -6,6 +6,15 @@ package com.example.jokubas.snookertracker_1601768;
 
 public class ScoreTrackSingle extends ScoreTrack {
 
+    public String getPlayer1Name(){
+        return player1T1;
+    }
+
+    public String getPlayer2Name(){
+        return player1T2;
+    }
+
+
     public ScoreTrackSingle(String player1, String player2) {
         super();
         this.player1T1 = player1;

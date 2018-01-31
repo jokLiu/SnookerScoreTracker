@@ -51,12 +51,13 @@ public abstract class ScoreTrack {
     protected void setAvailabaleBalls() {
         Arrays.fill(availBalls, false);
         if (countRed == 0) {
-            for (int i = 0; i < balls.length; i++) {
-                if (balls[i]) {
-                    availBalls[i] = true;
+            for (int i = balls.length-2; i>0; i--) {
+                if (balls[i]){
+                    availBalls[i+1] = true;
                     return;
                 }
             }
+
         }
         if (wasRedPotted) {
             Arrays.fill(availBalls, BallColour.RED.getValue() + 1,
@@ -74,6 +75,7 @@ public abstract class ScoreTrack {
 
         if (countRed == 0) {
             updateScoreColoured(ball);
+            setAvailabaleBalls();
             return;
         }
 

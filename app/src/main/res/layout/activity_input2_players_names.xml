@@ -52,7 +52,7 @@
         android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/play"
+        android:background="@drawable/play_selector"
         android:onClick="onClickPlay" />
 
     <ImageButton

@@ -1,7 +1,6 @@
 package com.example.jokubas.snookertracker_1601768;
 
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,7 +12,7 @@ import java.util.Locale;
 
 public class MainGameActivity extends AppCompatActivity {
 
-    private ScoreTrack score;
+    private ScoreTrackSingle score;
     private TextView p1score;
     private TextView p2score;
 
@@ -73,12 +72,20 @@ public class MainGameActivity extends AppCompatActivity {
                 score.nextPlayer();
                 break;
             case R.id.button_frame_end:
-                // TODO
+
+                Intent intent = new Intent(MainGameActivity.this, EndFrameSingleActivity.class);
+                intent.putExtra(EndFrameSingleActivity.PLAYER1_NAME, score.getPlayer1Name());
+                intent.putExtra(EndFrameSingleActivity.PLAYER2_NAME, score.getPlayer2Name());
+                intent.putExtra(EndFrameSingleActivity.PLAYER1_SCORE, score.getPlayer1T1Score());
+                intent.putExtra(EndFrameSingleActivity.PLAYER2_SCORE, score.getPlayer1T2Score());
+                // TODO pass the images
+                startActivity(intent);
                 break;
             default:
                 break;
 
         }
+
         p1score.setText(String.format(Locale.US, "%d", score.getPlayer1T1Score()));
         p2score.setText(String.format(Locale.US, "%d", score.getPlayer1T2Score()));
         setButtons();

@@ -27,7 +27,13 @@
         <activity
             android:name=".Input4PlayersNamesActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".MainGameMultiActivity"></activity>
+        <activity
+            android:name=".MainGameMultiActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".EndFrameSingleActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".EndFrameMultiActivity"></activity>
     </application>
 
 </manifest>

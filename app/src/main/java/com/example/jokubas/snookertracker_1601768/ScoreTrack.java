@@ -26,10 +26,13 @@ public abstract class ScoreTrack {
         this.turn = Turn.P1T1;
         this.countRed = 15;
         this.wasRedPotted = false;
+        balls = new boolean[8];
+        Arrays.fill(balls, false);
         this.player1_team1Score = 0;
         this.player1_team2Score = 0;
-        this.balls = new boolean[8];
-        Arrays.fill(balls, false);
+        availBalls = new boolean[8];
+        Arrays.fill(availBalls, false);
+        setAvailabaleBalls();
     }
 
     public boolean checkGameEnded() {
@@ -94,6 +97,7 @@ public abstract class ScoreTrack {
         if (countRed == 0) {
             balls[BallColour.RED.getValue()] = true;
         }
+        setAvailabaleBalls();
     }
 
     protected void updateScoreColoured(BallColour ball) {
@@ -111,5 +115,27 @@ public abstract class ScoreTrack {
 
     public abstract void nextPlayer();
 
-    public abstract int mapTurnToPlayerImageID(Turn turn);
+    public abstract int mapTurnToPlayerImageID();
+
+    public int mapBallColourToButtonID(BallColour ball) {
+        switch (ball) {
+            case RED:
+                return R.id.red;
+            case YELLOW:
+                return R.id.yellow;
+            case GREEN:
+                return R.id.green;
+            case BROWN:
+                return R.id.brown;
+            case BLUE:
+                return R.id.blue;
+            case PINK:
+                return R.id.pink;
+            case BLACK:
+                return R.id.black;
+        }
+
+        // should never happen
+        return 0;
+    }
 }

@@ -1,17 +1,19 @@
 package com.example.jokubas.snookertracker_1601768;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Locale;
 
 public class MainGameActivity extends AppCompatActivity {
 
-    private ScoreTrackSingle score;
+    private ScoreTrack score;
     private TextView p1score;
     private TextView p2score;
 
@@ -36,12 +38,8 @@ public class MainGameActivity extends AppCompatActivity {
 
         score = new ScoreTrackSingle(pName1, pName2);
 
-
-        // TODO remove
-        Button b = (Button) findViewById(R.id.red);
-        b.setEnabled(false);
-        b.setAlpha(0.5f);
-
+        setPlayers();
+        setButtons();
     }
 
     public void onClick(View v) {
@@ -81,10 +79,51 @@ public class MainGameActivity extends AppCompatActivity {
                 break;
 
         }
+        p1score.setText(String.format(Locale.US, "%d", score.getPlayer1T1Score()));
+        p2score.setText(String.format(Locale.US, "%d", score.getPlayer1T2Score()));
+        setButtons();
+        setPlayers();
+    }
 
+    private void setButtons() {
+        boolean[] balls = score.getAvailableBalls();
+        if (balls.length < 8) return;
 
-        p1score.setText(String.format(Locale.US,"%d", score.getPlayer1T1Score()));
-        p2score.setText(String.format(Locale.US,"%d", score.getPlayer1T2Score()));
+        Button button;
+        for (BallColour b : BallColour.values()) {
+            int id = score.mapBallColourToButtonID(b);
+            button = (Button) findViewById(id);
+            if (button == null) continue;
+            if (balls[b.getValue()]) {
+                button.setEnabled(true);
+                button.setAlpha(1f);
+
+            } else {
+                button.setEnabled(false);
+                button.setAlpha(0.5f);
+            }
+
+        }
+    }
+
+    private void setPlayers(){
+        int id = score.mapTurnToPlayerImageID();
+
+        // player 1 image
+        ImageView im = (ImageView) findViewById(R.id.p1_image);
+        if(R.id.p1_image==id) {
+            im.setAlpha(1f);
+        } else {
+            im.setAlpha(0.5f);
+        }
+
+        // player 2 image
+        ImageView im2 = (ImageView)  findViewById(R.id.p2_image);
+        if(R.id.p2_image==id) {
+            im2.setAlpha(1f);
+        } else {
+            im2.setAlpha(0.5f);
+        }
 
     }
 }

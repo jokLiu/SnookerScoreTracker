@@ -19,7 +19,16 @@ public class ScoreTrackMulti extends ScoreTrack {
 
     public ScoreTrackMulti(String player1_team1, String player2_team1,
                            String player1_team2, String player2_team2) {
-        // TODO
+        super();
+        this.player2_team1Score = 0;
+        this.player2_team2Score = 0;
+        this.team1Score = 0;
+        this.team2Score = 0;
+        this.player1T1 = player1_team1;
+        this.player1T2 = player1_team2;
+        this.player2T1 = player2_team1;
+        this.player2T2 = player2_team2;
+
     }
 
 
@@ -84,6 +93,7 @@ public class ScoreTrackMulti extends ScoreTrack {
         }
         nextPlayer();
         wasRedPotted = false;
+        setAvailabaleBalls();
     }
 
     public void nextPlayer() {
@@ -102,9 +112,10 @@ public class ScoreTrackMulti extends ScoreTrack {
                 break;
         }
         wasRedPotted = false;
+        setAvailabaleBalls();
     }
 
-    public int mapTurnToPlayerImageID(Turn turn) {
+    public int mapTurnToPlayerImageID() {
         switch (turn) {
             case P1T1:
                 return R.id.p1_t1_image;

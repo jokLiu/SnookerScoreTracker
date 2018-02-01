@@ -11,3 +11,5 @@ public class EndFrameMultiActivity extends AppCompatActivity {
         setContentView(R.layout.activity_end_frame_multi);
     }
 }
+
+

@@ -1,9 +1,296 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.jokubas.snookertracker_1601768.EndFrameMultiActivity">
+    android:background="@drawable/background4">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:id="@+id/light2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/silver_cup2"
+        android:layout_marginTop="75dp"
+        android:background="@null"
+        app:srcCompat="@drawable/bolt" />
+
+    <ImageView
+        android:id="@+id/p1t1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/p3t2"
+        android:layout_marginTop="41dp"
+        app:srcCompat="@drawable/p2" />
+
+    <ImageView
+        android:id="@+id/p2t1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/p1t1"
+        android:layout_marginEnd="36dp"
+        app:srcCompat="@drawable/p1" />
+
+    <ImageView
+        android:id="@+id/p3t2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@+id/silver_cup2"
+        android:layout_marginEnd="22dp"
+        android:layout_toStartOf="@+id/gold_cup2"
+        app:srcCompat="@drawable/p1" />
+
+    <ImageView
+        android:id="@+id/p4t2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignBottom="@+id/silver_cup2"
+        android:layout_alignStart="@+id/p2t1"
+        app:srcCompat="@drawable/p2" />
+
+    <ImageView
+        android:id="@+id/gold_cup2"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:layout_alignBottom="@+id/p1t1"
+        android:layout_centerHorizontal="true"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/gold_cup" />
+
+    <ImageView
+        android:id="@+id/silver_cup2"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_below="@+id/gold_cup2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="66dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/silver_cup" />
+
+    <TextView
+        android:id="@+id/p1t1_name"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/p1t1"
+        android:layout_below="@+id/p1t1"
+        android:text="TextView"
+        android:background="@drawable/textinputborder"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/p2t1_name"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/p2t1"
+        android:layout_below="@+id/p1t1"
+        android:text="TextView"
+        android:background="@drawable/textinputborder"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/p3t2_name"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/p3t2"
+        android:layout_below="@+id/p3t2"
+        android:text="TextView"
+        android:background="@drawable/textinputborder"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/p4t2_name"
+        android:layout_width="100dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/p4t2"
+        android:layout_below="@+id/p4t2"
+        android:text="TextView"
+        android:background="@drawable/textinputborder"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/team1_score"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/gold_cup2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/textinputborder"
+        android:gravity="center_horizontal"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/team2_score"
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@+id/p4t2_name"
+        android:layout_alignStart="@+id/team1_score"
+        android:background="@drawable/textinputborder"
+        android:gravity="center_horizontal"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="13sp"
+        android:textStyle="bold|italic" />
+
+    <Button
+        android:id="@+id/place1"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/p3t2_name"
+        android:layout_below="@+id/light2"
+        android:background="@drawable/red1"
+        android:enabled="false"
+        android:text="1"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/place2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/place1"
+        android:layout_below="@+id/place1"
+        android:background="@drawable/yellow1"
+        android:enabled="false"
+        android:text="2"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/place3"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/place2"
+        android:layout_below="@+id/place2"
+        android:background="@drawable/green1"
+        android:enabled="false"
+        android:text="3"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/place4"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/place3"
+        android:layout_below="@+id/place3"
+        android:background="@drawable/brown1"
+        android:enabled="false"
+        android:text="4"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/place1_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/place2"
+        android:layout_toEndOf="@+id/place1"
+        android:layout_marginLeft="10dp"
+        android:text="Akvile"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/place2_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/place3"
+        android:layout_alignStart="@+id/place1_name"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/place3_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/place4"
+        android:layout_alignStart="@+id/place1_name"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/place4_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/place4"
+        android:layout_alignBottom="@+id/place4"
+        android:layout_alignStart="@+id/place3_name"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/place1_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/place1_name"
+        android:layout_alignBottom="@+id/place1_name"
+        android:layout_alignStart="@+id/team2_score"
+        android:layout_marginStart="26dp"
+        android:text="50 points"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <TextView
+        android:id="@+id/place2_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/place2_name"
+        android:layout_alignStart="@+id/place1_score"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/place3_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/place3_name"
+        android:layout_alignEnd="@+id/place2_score"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"/>
+
+    <TextView
+        android:id="@+id/place4_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/place4_name"
+        android:layout_alignStart="@+id/place3_score"
+        android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"/>
+
+
+</RelativeLayout>

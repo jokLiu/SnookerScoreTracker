@@ -21,7 +21,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/p3t2"
         android:layout_marginTop="41dp"
-        app:srcCompat="@drawable/p2" />
+        app:srcCompat="@drawable/p2"
+        android:background="@null"/>
 
     <ImageView
         android:id="@+id/p2t1"
@@ -30,7 +31,8 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/p1t1"
         android:layout_marginEnd="36dp"
-        app:srcCompat="@drawable/p1" />
+        app:srcCompat="@drawable/p1"
+        android:background="@null"/>
 
     <ImageView
         android:id="@+id/p3t2"
@@ -39,7 +41,8 @@
         android:layout_alignBottom="@+id/silver_cup2"
         android:layout_marginEnd="22dp"
         android:layout_toStartOf="@+id/gold_cup2"
-        app:srcCompat="@drawable/p1" />
+        app:srcCompat="@drawable/p1"
+        android:background="@null"/>
 
     <ImageView
         android:id="@+id/p4t2"
@@ -47,7 +50,8 @@
         android:layout_height="100dp"
         android:layout_alignBottom="@+id/silver_cup2"
         android:layout_alignStart="@+id/p2t1"
-        app:srcCompat="@drawable/p2" />
+        app:srcCompat="@drawable/p2"
+        android:background="@null"/>
 
     <ImageView
         android:id="@+id/gold_cup2"
@@ -68,7 +72,8 @@
         android:layout_marginTop="66dp"
         android:background="@null"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/silver_cup" />
+        app:srcCompat="@drawable/silver_cup"
+        />
 
     <TextView
         android:id="@+id/p1t1_name"
@@ -143,7 +148,7 @@
         android:layout_alignStart="@+id/team1_score"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
-        android:text="TextView"
+        android:text="TextViewn"
         android:textColor="@color/black"
         android:textSize="13sp"
         android:textStyle="bold|italic" />
@@ -152,8 +157,9 @@
         android:id="@+id/place1"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_alignStart="@+id/p3t2_name"
+        android:layout_alignEnd="@+id/p3t2_name"
         android:layout_below="@+id/light2"
+        android:layout_marginEnd="26dp"
         android:background="@drawable/red1"
         android:enabled="false"
         android:text="1"
@@ -205,8 +211,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/place2"
-        android:layout_toEndOf="@+id/place1"
-        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="9dp"
+        android:layout_toStartOf="@+id/team2_score"
+        android:background="@null"
         android:text="Akvile"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -221,7 +228,8 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold|italic" />
+        android:textStyle="bold|italic"
+        android:background="@null"/>
 
     <TextView
         android:id="@+id/place3_name"
@@ -232,7 +240,8 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic"
+        android:background="@null"/>
 
     <TextView
         android:id="@+id/place4_name"
@@ -244,7 +253,8 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic"
+        android:background="@null"/>
 
     <TextView
         android:id="@+id/place1_score"
@@ -252,8 +262,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/place1_name"
         android:layout_alignBottom="@+id/place1_name"
-        android:layout_alignStart="@+id/team2_score"
-        android:layout_marginStart="26dp"
+        android:layout_toEndOf="@+id/silver_cup2"
+        android:background="@null"
         android:text="50 points"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -268,7 +278,8 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic"
+        android:background="@null"/>
 
     <TextView
         android:id="@+id/place3_score"
@@ -279,7 +290,8 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic"
+        android:background="@null"/>
 
     <TextView
         android:id="@+id/place4_score"
@@ -290,7 +302,25 @@
         android:text="TextView"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold|italic"/>
+        android:textStyle="bold|italic"
+        android:background="@null"/>
+
+    <Button
+        android:id="@+id/exit_button2"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/place4"
+        android:layout_marginTop="12dp"
+        android:layout_toStartOf="@+id/gold_cup2"
+        android:background="@drawable/exit_selector" />
+
+    <Button
+        android:id="@+id/play_again2"
+        android:layout_width="160dp"
+        android:layout_height="50dp"
+        android:layout_alignBottom="@+id/exit_button2"
+        android:layout_alignEnd="@+id/p4t2_name"
+        android:background="@drawable/play_again_selector" />
 
 
 </RelativeLayout>

@@ -1,6 +1,8 @@
 package com.example.jokubas.snookertracker_1601768;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,6 +21,10 @@ public class MainGameMultiActivity extends AppCompatActivity {
     private TextView p4T2Score;
     private TextView t1Score;
     private TextView t2Score;
+    private byte[] p1t1Image;
+    private byte[] p2t1Image;
+    private byte[] p1t2Image;
+    private byte[] p2t2Image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +40,26 @@ public class MainGameMultiActivity extends AppCompatActivity {
         String pName4 = intent.getStringExtra(Input4PlayersNamesActivity.name4);
 
         // get the text views of players' names from the current activity
-        TextView n1 = (TextView) findViewById(R.id.name1_t1);
-        TextView n2 = (TextView) findViewById(R.id.name2_t1);
-        TextView n3 = (TextView) findViewById(R.id.name3_t2);
-        TextView n4 = (TextView) findViewById(R.id.name4_t2);
+        TextView n1 = (TextView) findViewById(R.id.player1_name);
+        TextView n2 = (TextView) findViewById(R.id.player2_name);
+        TextView n3 = (TextView) findViewById(R.id.player3_name);
+        TextView n4 = (TextView) findViewById(R.id.player4_name);
+
+        // get the images
+        p1t1Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.imagep1t1);
+        p2t1Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.imagep2t1);
+        p1t2Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.imagep1t2);
+        p2t2Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.imagep2t2);
+
+        // set the images received
+        setImageView(p1t1Image, R.id.p1_t1_image);
+        setImageView(p2t1Image, R.id.p2_t1_image);
+        setImageView(p1t2Image, R.id.p3_t2_image);
+        setImageView(p2t2Image, R.id.p4_t2_image);
 
         // set players names received
         // TODO If players names are empty leave the current names
+        // TODO fix play again
         // maybe create helper method for this
         if (!pName1.equals(""))
             n1.setText(pName1);
@@ -62,6 +81,15 @@ public class MainGameMultiActivity extends AppCompatActivity {
         score = new ScoreTrackMulti(pName1, pName2, pName3, pName4);
         setPlayers();
         setButtons();
+    }
+
+
+    private void setImageView(byte[] image, int imgID){
+        if(image  != null ) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(image , 0, image.length);
+            ImageView imgView = findViewById(imgID);
+            imgView.setImageBitmap(bmp);
+        }
     }
 
     public void onClick(View v) {
@@ -95,6 +123,27 @@ public class MainGameMultiActivity extends AppCompatActivity {
                 score.nextPlayer();
                 break;
             case R.id.button_frame_end:
+                Intent intent = new Intent(MainGameMultiActivity.this, EndFrameMultiActivity.class);
+                intent.putExtra(EndFrameMultiActivity.PLAYER1T1_NAME, score.getPlayer1T1Name());
+                intent.putExtra(EndFrameMultiActivity.PLAYER2T1_NAME, score.getPlayer2T1Name());
+                intent.putExtra(EndFrameMultiActivity.PLAYER1T2_NAME, score.getPlayer1T2Name());
+                intent.putExtra(EndFrameMultiActivity.PLAYER2T2_NAME, score.getPlayer2T2Name());
+
+                intent.putExtra(EndFrameMultiActivity.PLAYER1T1_SCORE, score.getPlayer1T1Score());
+                intent.putExtra(EndFrameMultiActivity.PLAYER2T1_SCORE, score.getPlayer2T1Score());
+                intent.putExtra(EndFrameMultiActivity.PLAYER1T2_SCORE, score.getPlayer1T2Score());
+                intent.putExtra(EndFrameMultiActivity.PLAYER2T2_SCORE, score.getPlayer2T2Score());
+
+                intent.putExtra(EndFrameMultiActivity.TEAM1_SCORE, score.getTeam1Score());
+                intent.putExtra(EndFrameMultiActivity.TEAM2_SCORE, score.getTeam2Score());
+
+                intent.putExtra(EndFrameMultiActivity.PLAYER1T1_IMAGE, p1t1Image);
+                intent.putExtra(EndFrameMultiActivity.PLAYER2T1_IMAGE, p2t1Image);
+                intent.putExtra(EndFrameMultiActivity.PLAYER1T2_IMAGE, p1t2Image);
+                intent.putExtra(EndFrameMultiActivity.PLAYER2T2_IMAGE, p2t2Image);
+
+                // TODO pass the images
+                startActivity(intent);
                 // TODO
                 break;
             default:

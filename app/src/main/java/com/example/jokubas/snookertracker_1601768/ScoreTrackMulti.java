@@ -40,7 +40,6 @@ public class ScoreTrackMulti extends ScoreTrack {
         return player1_team2Score;
     }
 
-
     public int getPlayer2T1Score() {
         return player2_team1Score;
     }
@@ -55,6 +54,14 @@ public class ScoreTrackMulti extends ScoreTrack {
 
     public int getTeam2Score() {
         return team2Score;
+    }
+
+    public String getPlayer2T1Name(){
+        return player2T1;
+    }
+
+    public String getPlayer2T2Name(){
+        return player2T2;
     }
 
 

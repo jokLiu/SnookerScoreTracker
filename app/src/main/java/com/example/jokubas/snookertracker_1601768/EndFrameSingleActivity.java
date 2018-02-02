@@ -1,13 +1,14 @@
 package com.example.jokubas.snookertracker_1601768;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 public class EndFrameSingleActivity extends AppCompatActivity {
 
@@ -28,22 +29,37 @@ public class EndFrameSingleActivity extends AppCompatActivity {
         String p2name = intent.getStringExtra(PLAYER2_NAME);
         int p1score = intent.getIntExtra(PLAYER1_SCORE, 0);
         int p2score = intent.getIntExtra(PLAYER2_SCORE, 0);
+        byte[] p1Image = intent.getByteArrayExtra(PLAYER1_IMAGE);
+        byte[] p2Image = intent.getByteArrayExtra(PLAYER2_IMAGE);
 
         TextView nameWinner = findViewById(R.id.winner);
         TextView nameLoser = findViewById(R.id.loser);
         TextView scoreWinner = findViewById(R.id.score_winner);
         TextView scoreLoser = findViewById(R.id.score_loser);
+        ImageView imageWin = findViewById(R.id.win_img);
+        ImageView imageLost = findViewById(R.id.lost_img);
 
-        if(p1score > p2score){
+        if (p1score > p2score) {
             nameWinner.setText(p1name);
             scoreWinner.setText(Integer.toString(p1score));
+            Bitmap bmp1 = BitmapFactory.decodeByteArray(p1Image , 0, p1Image.length);
+            imageWin.setImageBitmap(bmp1);
+
             nameLoser.setText(p2name);
             scoreLoser.setText(Integer.toString(p2score));
+            Bitmap bmp2 = BitmapFactory.decodeByteArray(p2Image , 0, p2Image.length);
+            imageLost.setImageBitmap(bmp2);
+
         } else {
             nameWinner.setText(p2name);
             scoreWinner.setText(Integer.toString(p2score));
+            Bitmap bmp1 = BitmapFactory.decodeByteArray(p2Image , 0, p2Image.length);
+            imageWin.setImageBitmap(bmp1);
+
             nameLoser.setText(p1name);
             scoreLoser.setText(Integer.toString(p1score));
+            Bitmap bmp2 = BitmapFactory.decodeByteArray(p1Image , 0, p1Image.length);
+            imageLost.setImageBitmap(bmp2);
         }
 
         Button exit = findViewById(R.id.exit_button);

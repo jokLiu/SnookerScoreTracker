@@ -28,7 +28,7 @@
         android:id="@+id/name1"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton"
+        android:layout_alignStart="@+id/imagep1t2"
         android:layout_below="@+id/imageView6"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
@@ -40,7 +40,7 @@
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/play_button"
-        android:layout_alignStart="@+id/imageButton2"
+        android:layout_alignStart="@+id/imagep2t2"
         android:layout_marginBottom="100dp"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
@@ -57,7 +57,7 @@
         android:onClick="onClickPlay" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imagep1t2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/name1"
@@ -66,10 +66,11 @@
         android:layout_below="@+id/imageView3"
         android:background="@null"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/p1" />
+        app:srcCompat="@drawable/p1"
+        android:onClick="onClickBrowsePhoto"/>
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imagep2t2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/name2"
@@ -78,7 +79,8 @@
         android:layout_below="@+id/imageView5"
         android:background="@null"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/p2" />
+        app:srcCompat="@drawable/p2"
+        android:onClick="onClickBrowsePhoto"/>
 
     <ImageView
         android:id="@+id/imageView3"

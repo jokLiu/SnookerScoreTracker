@@ -48,6 +48,15 @@ public abstract class ScoreTrack {
     }
 
 
+    public String getPlayer1T1Name(){
+        return player1T1;
+    }
+
+    public String getPlayer1T2Name(){
+        return player1T2;
+    }
+
+
     protected void setAvailabaleBalls() {
         Arrays.fill(availBalls, false);
         if (countRed == 0) {

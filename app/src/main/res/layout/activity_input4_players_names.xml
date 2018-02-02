@@ -5,20 +5,21 @@
     android:background="@drawable/background4">
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/imagep1t1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/imageView2"
-        android:layout_alignEnd="@+id/imageButton"
+        android:layout_alignEnd="@+id/imagep1t2"
         android:background="@null"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/p2" />
+        app:srcCompat="@drawable/p2"
+        android:onClick="onClickBrowsePhotoMulti"/>
 
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/imageButton"
+        android:layout_above="@+id/imagep1t2"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="48dp"
         android:background="@null"
@@ -30,7 +31,7 @@
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/name3_t2"
-        android:layout_below="@+id/imageButton10"
+        android:layout_below="@+id/imagep2t1"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
         android:hint="Player 1"
@@ -41,18 +42,18 @@
         android:id="@+id/name2_t1"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton10"
+        android:layout_below="@+id/imagep2t1"
         android:layout_toEndOf="@+id/name3_t2"
         android:background="@drawable/textinputborder"
         android:gravity="center_horizontal"
-        android:hint="Player 1"
+        android:hint="Player 2"
         android:inputType="text" />
 
     <EditText
         android:id="@+id/name3_t2"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageButton"
+        android:layout_below="@+id/imagep1t2"
         android:layout_marginEnd="17dp"
         android:layout_toStartOf="@+id/name4_t2"
         android:background="@drawable/textinputborder"
@@ -83,7 +84,7 @@
         android:onClick="onClickPlayMulti" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/imagep1t2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/name4_t2"
@@ -91,20 +92,22 @@
         android:layout_toStartOf="@+id/name4_t2"
         android:background="@null"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/p1" />
+        app:srcCompat="@drawable/p1"
+        android:onClick="onClickBrowsePhotoMulti"/>
 
     <ImageButton
-        android:id="@+id/imageButton10"
+        android:id="@+id/imagep2t1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/imageButton2"
-        android:layout_alignTop="@+id/imageButton8"
+        android:layout_alignStart="@+id/imagep2t2"
+        android:layout_alignTop="@+id/imagep1t1"
         android:background="@null"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/p1" />
+        app:srcCompat="@drawable/p1"
+        android:onClick="onClickBrowsePhotoMulti"/>
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/imagep2t2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/name4_t2"
@@ -112,19 +115,21 @@
         android:layout_marginStart="14dp"
         android:background="@null"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/p2" />
+        app:srcCompat="@drawable/p2"
+        android:onClick="onClickBrowsePhotoMulti"/>
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_above="@+id/imageButton"
+        android:layout_above="@+id/imagep1t2"
         android:layout_alignEnd="@+id/play_button"
         android:layout_marginBottom="14dp"
         android:layout_marginEnd="12dp"
         android:background="@null"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/team2" />
+        app:srcCompat="@drawable/team2"
+        android:onClick="onClickBrowsePhotoMulti"/>
 
     <ImageView
         android:id="@+id/imageView11"

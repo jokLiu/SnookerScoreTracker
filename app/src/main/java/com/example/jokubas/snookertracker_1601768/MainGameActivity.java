@@ -1,6 +1,8 @@
 package com.example.jokubas.snookertracker_1601768;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +17,8 @@ public class MainGameActivity extends AppCompatActivity {
     private ScoreTrackSingle score;
     private TextView p1score;
     private TextView p2score;
+    private byte[] player1Image;
+    private byte[] player2Image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,21 @@ public class MainGameActivity extends AppCompatActivity {
 
         String pName1 = intent.getStringExtra(Input2PlayersNamesActivity.name1);
         String pName2 = intent.getStringExtra(Input2PlayersNamesActivity.name2);
+
+        player1Image = intent.getByteArrayExtra(Input2PlayersNamesActivity.image1);
+        player2Image = intent.getByteArrayExtra(Input2PlayersNamesActivity.image2);
+
+        if(player1Image  != null ) {
+            Bitmap bmp1 = BitmapFactory.decodeByteArray(player1Image , 0, player1Image .length);
+            ImageView imgView1 = findViewById(R.id.p1_image);
+            imgView1.setImageBitmap(bmp1);
+        }
+
+        if(player2Image != null) {
+            Bitmap bmp2 = BitmapFactory.decodeByteArray(player2Image, 0, player2Image.length);
+            ImageView imgView2 = findViewById(R.id.p2_image);
+            imgView2.setImageBitmap(bmp2);
+        }
 
         TextView n1 = (TextView) findViewById(R.id.player1_name);
         TextView n2 = (TextView) findViewById(R.id.player3_name);
@@ -74,10 +93,13 @@ public class MainGameActivity extends AppCompatActivity {
             case R.id.button_frame_end:
 
                 Intent intent = new Intent(MainGameActivity.this, EndFrameSingleActivity.class);
-                intent.putExtra(EndFrameSingleActivity.PLAYER1_NAME, score.getPlayer1Name());
-                intent.putExtra(EndFrameSingleActivity.PLAYER2_NAME, score.getPlayer2Name());
+                intent.putExtra(EndFrameSingleActivity.PLAYER1_NAME, score.getPlayer1T1Name());
+                intent.putExtra(EndFrameSingleActivity.PLAYER2_NAME, score.getPlayer1T2Name());
                 intent.putExtra(EndFrameSingleActivity.PLAYER1_SCORE, score.getPlayer1T1Score());
                 intent.putExtra(EndFrameSingleActivity.PLAYER2_SCORE, score.getPlayer1T2Score());
+                intent.putExtra(EndFrameSingleActivity.PLAYER1_IMAGE, player1Image);
+                intent.putExtra(EndFrameSingleActivity.PLAYER2_IMAGE, player2Image);
+
                 // TODO pass the images
                 startActivity(intent);
                 break;

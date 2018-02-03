@@ -1,7 +1,5 @@
 package com.example.jokubas.snookertracker_1601768;
 
-import java.util.Arrays;
-
 /**
  * Created by jokubas on 31/01/18.
  */
@@ -56,11 +54,11 @@ public class ScoreTrackMulti extends ScoreTrack {
         return team2Score;
     }
 
-    public String getPlayer2T1Name(){
+    public String getPlayer2T1Name() {
         return player2T1;
     }
 
-    public String getPlayer2T2Name(){
+    public String getPlayer2T2Name() {
         return player2T2;
     }
 

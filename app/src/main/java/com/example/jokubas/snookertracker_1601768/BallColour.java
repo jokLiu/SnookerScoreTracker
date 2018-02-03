@@ -14,6 +14,7 @@ public enum BallColour {
     BLACK(7);
 
     private final int value;
+
     BallColour(int value) {
         this.value = value;
     }

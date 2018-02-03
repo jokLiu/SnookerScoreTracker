@@ -33,13 +33,13 @@ public class MainGameActivity extends AppCompatActivity {
         player1Image = intent.getByteArrayExtra(Input2PlayersNamesActivity.image1);
         player2Image = intent.getByteArrayExtra(Input2PlayersNamesActivity.image2);
 
-        if(player1Image  != null ) {
-            Bitmap bmp1 = BitmapFactory.decodeByteArray(player1Image , 0, player1Image .length);
+        if (player1Image != null) {
+            Bitmap bmp1 = BitmapFactory.decodeByteArray(player1Image, 0, player1Image.length);
             ImageView imgView1 = findViewById(R.id.p1_image);
             imgView1.setImageBitmap(bmp1);
         }
 
-        if(player2Image != null) {
+        if (player2Image != null) {
             Bitmap bmp2 = BitmapFactory.decodeByteArray(player2Image, 0, player2Image.length);
             ImageView imgView2 = findViewById(R.id.p2_image);
             imgView2.setImageBitmap(bmp2);
@@ -99,8 +99,8 @@ public class MainGameActivity extends AppCompatActivity {
 
         }
 
-        setScoreText(p1score, score.getPlayer1T1Score() );
-        setScoreText(p2score, score.getPlayer1T2Score() );
+        setScoreText(p1score, score.getPlayer1T1Score());
+        setScoreText(p2score, score.getPlayer1T2Score());
         setRedBallsView();
         setButtons();
         setPlayers();
@@ -128,22 +128,22 @@ public class MainGameActivity extends AppCompatActivity {
         }
     }
 
-    private void setRedBallsView(){
+    private void setRedBallsView() {
         int n = score.getNumberOfReds();
-        setScoreText((TextView)findViewById(R.id.counterViewSingle), n);
+        setScoreText((TextView) findViewById(R.id.counterViewSingle), n);
     }
 
-    private void setScoreText(TextView v, int score){
+    private void setScoreText(TextView v, int score) {
         v.setText(String.format(Locale.US, "%d", score));
     }
 
 
-    private void checkGameEnded(){
-        if(score.checkGameEnded())
+    private void checkGameEnded() {
+        if (score.checkGameEnded())
             endGame();
     }
 
-    private void endGame(){
+    private void endGame() {
         Intent intent = new Intent(MainGameActivity.this, EndFrameSingleActivity.class);
         intent.putExtra(EndFrameSingleActivity.PLAYER1_NAME, score.getPlayer1T1Name());
         intent.putExtra(EndFrameSingleActivity.PLAYER2_NAME, score.getPlayer1T2Name());
@@ -157,20 +157,20 @@ public class MainGameActivity extends AppCompatActivity {
     }
 
 
-    private void setPlayers(){
+    private void setPlayers() {
         int id = score.mapTurnToPlayerImageID();
 
         // player 1 image
         ImageView im = (ImageView) findViewById(R.id.p1_image);
-        if(R.id.p1_image==id) {
+        if (R.id.p1_image == id) {
             im.setAlpha(1f);
         } else {
             im.setAlpha(0.5f);
         }
 
         // player 2 image
-        ImageView im2 = (ImageView)  findViewById(R.id.p2_image);
-        if(R.id.p2_image==id) {
+        ImageView im2 = (ImageView) findViewById(R.id.p2_image);
+        if (R.id.p2_image == id) {
             im2.setAlpha(1f);
         } else {
             im2.setAlpha(0.5f);

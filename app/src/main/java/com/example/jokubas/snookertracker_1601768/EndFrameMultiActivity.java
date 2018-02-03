@@ -3,18 +3,16 @@ package com.example.jokubas.snookertracker_1601768;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 public class EndFrameMultiActivity extends AppCompatActivity {
@@ -46,6 +44,7 @@ public class EndFrameMultiActivity extends AppCompatActivity {
     private String p2t1name;
     private String p1t2name;
     private String p2t2name;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +87,13 @@ public class EndFrameMultiActivity extends AppCompatActivity {
         int team2Score = intent.getIntExtra(TEAM2_SCORE, 0);
 
         // set the winner team views based on the score
-        if(team1Score > team2Score)
+        if (team1Score > team2Score)
             setTeams(p1t1name, p2t1name, p1t2name, p2t2name,
                     p1t1Image, p2t1Image, p1t2Image, p2t2Image,
                     team1Score, team2Score);
         else
             setTeams(p1t2name, p2t2name, p1t1name, p2t1name,
-                     p1t2Image, p2t2Image, p1t1Image, p2t1Image,
+                    p1t2Image, p2t2Image, p1t1Image, p2t1Image,
                     team2Score, team1Score);
 
         // setup the exit button listener
@@ -114,7 +113,7 @@ public class EndFrameMultiActivity extends AppCompatActivity {
 
     }
 
-    public void onClickPlayAgain(View v){
+    public void onClickPlayAgain(View v) {
         Intent intent = new Intent(EndFrameMultiActivity.this, MainGameMultiActivity.class);
 
         intent.putExtra(Input4PlayersNamesActivity.name1, p1t1name);
@@ -138,7 +137,7 @@ public class EndFrameMultiActivity extends AppCompatActivity {
                           String p1loser, String p2loser,
                           byte[] p1winnerImage, byte[] p2winnerImage,
                           byte[] p1loserImage, byte[] p2loserImage,
-                          int scoreWin, int scoreLost){
+                          int scoreWin, int scoreLost) {
 
         setTextView(p1winner, R.id.p1t1_name);
         setTextView(p2winner, R.id.p2t1_name);
@@ -152,35 +151,35 @@ public class EndFrameMultiActivity extends AppCompatActivity {
         setImageView(p2loserImage, R.id.p4t2);
     }
 
-    private void setImageView(byte[] image, int imgID){
-        if(image  != null ) {
-            Bitmap bmp = BitmapFactory.decodeByteArray(image , 0, image.length);
+    private void setImageView(byte[] image, int imgID) {
+        if (image != null) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
             ImageView imgView = findViewById(imgID);
             imgView.setImageBitmap(bmp);
         }
     }
 
-    private void setTextView(String text, int textID){
+    private void setTextView(String text, int textID) {
         TextView view = findViewById(textID);
         view.setText(text);
     }
 
-    private void setLeaders(List<PlayerWrapper> players){
-        Collections.sort(players,Collections.<PlayerWrapper>reverseOrder());
+    private void setLeaders(List<PlayerWrapper> players) {
+        Collections.sort(players, Collections.<PlayerWrapper>reverseOrder());
         List<TextView> names = new ArrayList<>();
-        names.add((TextView)findViewById(R.id.place1_name));
-        names.add((TextView)findViewById(R.id.place2_name));
-        names.add((TextView)findViewById(R.id.place3_name));
-        names.add((TextView)findViewById(R.id.place4_name));
+        names.add((TextView) findViewById(R.id.place1_name));
+        names.add((TextView) findViewById(R.id.place2_name));
+        names.add((TextView) findViewById(R.id.place3_name));
+        names.add((TextView) findViewById(R.id.place4_name));
 
         List<TextView> scores = new ArrayList<>();
-        scores.add((TextView)findViewById(R.id.place1_score));
-        scores.add((TextView)findViewById(R.id.place2_score));
-        scores.add((TextView)findViewById(R.id.place3_score));
-        scores.add((TextView)findViewById(R.id.place4_score));
+        scores.add((TextView) findViewById(R.id.place1_score));
+        scores.add((TextView) findViewById(R.id.place2_score));
+        scores.add((TextView) findViewById(R.id.place3_score));
+        scores.add((TextView) findViewById(R.id.place4_score));
 
 
-        for(int i=0; i<4; i++){
+        for (int i = 0; i < 4; i++) {
             names.get(i).setText(players.get(i).name);
             scores.get(i).setText(Integer.toString(players.get(i).score));
         }
@@ -192,14 +191,14 @@ public class EndFrameMultiActivity extends AppCompatActivity {
         String name;
         int score;
 
-        public PlayerWrapper(String name, int score){
+        public PlayerWrapper(String name, int score) {
             this.name = name;
             this.score = score;
         }
 
         @Override
         public int compareTo(@NonNull Object o) {
-            PlayerWrapper p = (PlayerWrapper)o;
+            PlayerWrapper p = (PlayerWrapper) o;
             return this.score - p.score;
         }
     }

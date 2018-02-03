@@ -85,15 +85,15 @@ public class MainGameMultiActivity extends AppCompatActivity {
         setButtons();
     }
 
-    private void setRedBallsView(){
+    private void setRedBallsView() {
         int n = score.getNumberOfReds();
-       setScoreText((TextView)findViewById(R.id.counterView), n);
+        setScoreText((TextView) findViewById(R.id.counterView), n);
     }
 
 
-    private void setImageView(byte[] image, int imgID){
-        if(image  != null ) {
-            Bitmap bmp = BitmapFactory.decodeByteArray(image , 0, image.length);
+    private void setImageView(byte[] image, int imgID) {
+        if (image != null) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
             ImageView imgView = findViewById(imgID);
             imgView.setImageBitmap(bmp);
         }
@@ -149,7 +149,7 @@ public class MainGameMultiActivity extends AppCompatActivity {
         checkGameEnded();
     }
 
-    private void endGame(){
+    private void endGame() {
         Intent intent = new Intent(MainGameMultiActivity.this, EndFrameMultiActivity.class);
         intent.putExtra(EndFrameMultiActivity.PLAYER1T1_NAME, score.getPlayer1T1Name());
         intent.putExtra(EndFrameMultiActivity.PLAYER2T1_NAME, score.getPlayer2T1Name());
@@ -174,16 +174,15 @@ public class MainGameMultiActivity extends AppCompatActivity {
         // TODO
     }
 
-    private void setScoreText(TextView v, int score){
+    private void setScoreText(TextView v, int score) {
         v.setText(String.format(Locale.US, "%d", score));
     }
 
 
-    private void checkGameEnded(){
-        if(score.checkGameEnded())
+    private void checkGameEnded() {
+        if (score.checkGameEnded())
             endGame();
     }
-
 
 
     private void setButtons() {

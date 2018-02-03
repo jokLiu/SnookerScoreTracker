@@ -9,11 +9,10 @@ import java.util.Arrays;
 public abstract class ScoreTrack {
 
 
-    protected String player1T1;
-    protected String player1T2;
-
     // all
     protected static int FOUL = 4;
+    protected String player1T1;
+    protected String player1T2;
     protected Turn turn;
     protected int countRed;
     protected boolean wasRedPotted;
@@ -22,7 +21,7 @@ public abstract class ScoreTrack {
     protected int player1_team2Score;
     protected boolean[] availBalls;
 
-    public ScoreTrack(){
+    public ScoreTrack() {
         this.turn = Turn.P1T1;
         this.countRed = 15;
         this.wasRedPotted = false;
@@ -35,7 +34,7 @@ public abstract class ScoreTrack {
         setAvailabaleBalls();
     }
 
-    public int getNumberOfReds(){
+    public int getNumberOfReds() {
         return countRed;
     }
 
@@ -52,11 +51,11 @@ public abstract class ScoreTrack {
     }
 
 
-    public String getPlayer1T1Name(){
+    public String getPlayer1T1Name() {
         return player1T1;
     }
 
-    public String getPlayer1T2Name(){
+    public String getPlayer1T2Name() {
         return player1T2;
     }
 
@@ -64,9 +63,9 @@ public abstract class ScoreTrack {
     protected void setAvailabaleBalls() {
         Arrays.fill(availBalls, false);
         if (countRed == 0) {
-            for (int i = balls.length-2; i>0; i--) {
-                if (balls[i]){
-                    availBalls[i+1] = true;
+            for (int i = balls.length - 2; i > 0; i--) {
+                if (balls[i]) {
+                    availBalls[i + 1] = true;
                     return;
                 }
             }

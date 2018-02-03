@@ -58,6 +58,7 @@ public class MainGameActivity extends AppCompatActivity {
 
         setPlayers();
         setButtons();
+        setRedBallsView();
     }
 
     public void onClick(View v) {
@@ -91,27 +92,19 @@ public class MainGameActivity extends AppCompatActivity {
                 score.nextPlayer();
                 break;
             case R.id.button_frame_end:
-
-                Intent intent = new Intent(MainGameActivity.this, EndFrameSingleActivity.class);
-                intent.putExtra(EndFrameSingleActivity.PLAYER1_NAME, score.getPlayer1T1Name());
-                intent.putExtra(EndFrameSingleActivity.PLAYER2_NAME, score.getPlayer1T2Name());
-                intent.putExtra(EndFrameSingleActivity.PLAYER1_SCORE, score.getPlayer1T1Score());
-                intent.putExtra(EndFrameSingleActivity.PLAYER2_SCORE, score.getPlayer1T2Score());
-                intent.putExtra(EndFrameSingleActivity.PLAYER1_IMAGE, player1Image);
-                intent.putExtra(EndFrameSingleActivity.PLAYER2_IMAGE, player2Image);
-
-                // TODO pass the images
-                startActivity(intent);
+                endGame();
                 break;
             default:
                 break;
 
         }
 
-        p1score.setText(String.format(Locale.US, "%d", score.getPlayer1T1Score()));
-        p2score.setText(String.format(Locale.US, "%d", score.getPlayer1T2Score()));
+        setScoreText(p1score, score.getPlayer1T1Score() );
+        setScoreText(p2score, score.getPlayer1T2Score() );
+        setRedBallsView();
         setButtons();
         setPlayers();
+        checkGameEnded();
     }
 
     private void setButtons() {
@@ -134,6 +127,35 @@ public class MainGameActivity extends AppCompatActivity {
 
         }
     }
+
+    private void setRedBallsView(){
+        int n = score.getNumberOfReds();
+        setScoreText((TextView)findViewById(R.id.counterViewSingle), n);
+    }
+
+    private void setScoreText(TextView v, int score){
+        v.setText(String.format(Locale.US, "%d", score));
+    }
+
+
+    private void checkGameEnded(){
+        if(score.checkGameEnded())
+            endGame();
+    }
+
+    private void endGame(){
+        Intent intent = new Intent(MainGameActivity.this, EndFrameSingleActivity.class);
+        intent.putExtra(EndFrameSingleActivity.PLAYER1_NAME, score.getPlayer1T1Name());
+        intent.putExtra(EndFrameSingleActivity.PLAYER2_NAME, score.getPlayer1T2Name());
+        intent.putExtra(EndFrameSingleActivity.PLAYER1_SCORE, score.getPlayer1T1Score());
+        intent.putExtra(EndFrameSingleActivity.PLAYER2_SCORE, score.getPlayer1T2Score());
+        intent.putExtra(EndFrameSingleActivity.PLAYER1_IMAGE, player1Image);
+        intent.putExtra(EndFrameSingleActivity.PLAYER2_IMAGE, player2Image);
+
+        // TODO pass the images
+        startActivity(intent);
+    }
+
 
     private void setPlayers(){
         int id = score.mapTurnToPlayerImageID();

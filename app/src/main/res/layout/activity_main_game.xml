@@ -213,4 +213,16 @@
         android:textStyle="bold"
         android:background="@null"/>
 
+    <TextView
+        android:id="@+id/counterViewSingle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/red"
+        android:layout_alignTop="@+id/red"
+        android:text="20"
+        android:background="@null"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
 </RelativeLayout>

@@ -13,7 +13,6 @@ public enum BallColour {
     PINK(6),
     BLACK(7);
 
-
     private final int value;
     BallColour(int value) {
         this.value = value;

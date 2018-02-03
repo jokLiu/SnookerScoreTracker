@@ -35,6 +35,10 @@ public abstract class ScoreTrack {
         setAvailabaleBalls();
     }
 
+    public int getNumberOfReds(){
+        return countRed;
+    }
+
     public boolean checkGameEnded() {
         return balls[7];
     }

@@ -2,6 +2,7 @@ package com.example.jokubas.snookertracker_1601768;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -16,6 +17,7 @@ import android.widget.ImageView;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Input4PlayersNamesActivity extends AppCompatActivity {
     public static String name1 = "pName1";
@@ -32,17 +34,18 @@ public class Input4PlayersNamesActivity extends AppCompatActivity {
     private Bitmap p2T1Image = null;
     private Bitmap p1T2Image = null;
     private Bitmap p2T2Image = null;
+    private String[] extensions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input4_players_names);
 
-        p1T1Image = p2T2Image = BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.drawable.p1);
+        p1T1Image = p2T2Image = BitmapFactory.decodeResource(getResources(),  R.drawable.p2);
+        p2T1Image = p1T2Image = BitmapFactory.decodeResource(getResources(),  R.drawable.p1);
 
-        p2T1Image = p1T2Image = BitmapFactory.decodeResource(getApplicationContext().getResources(),
-                R.drawable.p2);
+        extensions = new String[4];
+        Arrays.fill(extensions, "");
     }
 
     public void onClickPlayMulti(View v){
@@ -55,26 +58,36 @@ public class Input4PlayersNamesActivity extends AppCompatActivity {
         EditText n3 = (EditText) findViewById(R.id.name3_t2);
         EditText n4 = (EditText) findViewById(R.id.name4_t2);
 
-        intent.putExtra(name1, n1.getText().toString());
-        intent.putExtra(name2, n2.getText().toString());
-        intent.putExtra(name3, n3.getText().toString());
-        intent.putExtra(name4, n4.getText().toString());
+        putExtraName(intent, (EditText)findViewById(R.id.name1_t1), name1);
+        putExtraName(intent, (EditText)findViewById(R.id.name2_t1), name2);
+        putExtraName(intent, (EditText)findViewById(R.id.name3_t2), name3);
+        putExtraName(intent, (EditText)findViewById(R.id.name4_t2), name4);
 
-        addImage(intent, p1T1Image, imagep1t1);
-        addImage(intent, p2T1Image, imagep2t1);
-        addImage(intent, p1T2Image, imagep1t2);
-        addImage(intent, p2T2Image, imagep2t2);
+        addImage(intent, p1T1Image, imagep1t1, extensions[0]);
+        addImage(intent, p2T1Image, imagep2t1, extensions[1]);
+        addImage(intent, p1T2Image, imagep1t2, extensions[2]);
+        addImage(intent, p2T2Image, imagep2t2, extensions[3]);
 
         startActivity(intent);
     }
 
+    private void putExtraName(Intent intent, EditText textView, String extraName){
+        String text = textView.getText().toString();
+        if(text.equals(""))
+            text = textView.getHint().toString();
+        intent.putExtra(extraName, text);
+    }
 
-    private void addImage(Intent intent, Bitmap image, String extraName) {
+
+    private void addImage(Intent intent, Bitmap image, String extraName, String extension) {
         if (image == null) return;
 
         intent.putExtra(extraName, image);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        if(extension.equals(".jpg"))
+            image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        else
+            image.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] b = baos.toByteArray();
 
         intent.putExtra(extraName, b);
@@ -104,29 +117,41 @@ public class Input4PlayersNamesActivity extends AppCompatActivity {
                 bitmap = Bitmap.createScaledBitmap(bitmap, imageView.getWidth(), imageView.getHeight(), true);
                 imageView.setImageBitmap(bitmap);
 
+                int imgIdx = -1;
                 switch (id) {
                     case R.id.imagep1t1:
                         p1T1Image = bitmap;
                         findViewById(R.id.upload).setVisibility(View.INVISIBLE);
+                        imgIdx = 0;
                         break;
                     case R.id.imagep2t1:
                         p2T1Image = bitmap;
                         findViewById(R.id.upload2).setVisibility(View.INVISIBLE);
+                        imgIdx = 1;
                         break;
                     case R.id.imagep1t2:
                         p1T2Image = bitmap;
                         findViewById(R.id.upload3).setVisibility(View.INVISIBLE);
+                        imgIdx = 2;
                         break;
                     case R.id.imagep2t2:
                         p2T2Image = bitmap;
                         findViewById(R.id.upload4).setVisibility(View.INVISIBLE);
+                        imgIdx = 3;
                         break;
                 }
-            } catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+
+                String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
+                if (cursor.moveToFirst() && imgIdx >= 0) {
+                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                    String filePath = cursor.getString(columnIndex);
+                    extensions[imgIdx] = filePath.substring(filePath.lastIndexOf("."));
+                }
+                cursor.close();
+
+
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }

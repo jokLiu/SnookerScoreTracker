@@ -79,8 +79,15 @@ public class MainGameMultiActivity extends AppCompatActivity {
 
         // TODO names might be empty
         score = new ScoreTrackMulti(pName1, pName2, pName3, pName4);
+
+        setRedBallsView();
         setPlayers();
         setButtons();
+    }
+
+    private void setRedBallsView(){
+        int n = score.getNumberOfReds();
+       setScoreText((TextView)findViewById(R.id.counterView), n);
     }
 
 
@@ -123,28 +130,7 @@ public class MainGameMultiActivity extends AppCompatActivity {
                 score.nextPlayer();
                 break;
             case R.id.button_frame_end:
-                Intent intent = new Intent(MainGameMultiActivity.this, EndFrameMultiActivity.class);
-                intent.putExtra(EndFrameMultiActivity.PLAYER1T1_NAME, score.getPlayer1T1Name());
-                intent.putExtra(EndFrameMultiActivity.PLAYER2T1_NAME, score.getPlayer2T1Name());
-                intent.putExtra(EndFrameMultiActivity.PLAYER1T2_NAME, score.getPlayer1T2Name());
-                intent.putExtra(EndFrameMultiActivity.PLAYER2T2_NAME, score.getPlayer2T2Name());
-
-                intent.putExtra(EndFrameMultiActivity.PLAYER1T1_SCORE, score.getPlayer1T1Score());
-                intent.putExtra(EndFrameMultiActivity.PLAYER2T1_SCORE, score.getPlayer2T1Score());
-                intent.putExtra(EndFrameMultiActivity.PLAYER1T2_SCORE, score.getPlayer1T2Score());
-                intent.putExtra(EndFrameMultiActivity.PLAYER2T2_SCORE, score.getPlayer2T2Score());
-
-                intent.putExtra(EndFrameMultiActivity.TEAM1_SCORE, score.getTeam1Score());
-                intent.putExtra(EndFrameMultiActivity.TEAM2_SCORE, score.getTeam2Score());
-
-                intent.putExtra(EndFrameMultiActivity.PLAYER1T1_IMAGE, p1t1Image);
-                intent.putExtra(EndFrameMultiActivity.PLAYER2T1_IMAGE, p2t1Image);
-                intent.putExtra(EndFrameMultiActivity.PLAYER1T2_IMAGE, p1t2Image);
-                intent.putExtra(EndFrameMultiActivity.PLAYER2T2_IMAGE, p2t2Image);
-
-                // TODO pass the images
-                startActivity(intent);
-                // TODO
+                endGame();
                 break;
             default:
                 break;
@@ -157,13 +143,47 @@ public class MainGameMultiActivity extends AppCompatActivity {
         setScoreText(p4T2Score, score.getPlayer2T2Score());
         setScoreText(t1Score, score.getTeam1Score());
         setScoreText(t2Score, score.getTeam2Score());
+        setRedBallsView();
         setButtons();
         setPlayers();
+        checkGameEnded();
+    }
+
+    private void endGame(){
+        Intent intent = new Intent(MainGameMultiActivity.this, EndFrameMultiActivity.class);
+        intent.putExtra(EndFrameMultiActivity.PLAYER1T1_NAME, score.getPlayer1T1Name());
+        intent.putExtra(EndFrameMultiActivity.PLAYER2T1_NAME, score.getPlayer2T1Name());
+        intent.putExtra(EndFrameMultiActivity.PLAYER1T2_NAME, score.getPlayer1T2Name());
+        intent.putExtra(EndFrameMultiActivity.PLAYER2T2_NAME, score.getPlayer2T2Name());
+
+        intent.putExtra(EndFrameMultiActivity.PLAYER1T1_SCORE, score.getPlayer1T1Score());
+        intent.putExtra(EndFrameMultiActivity.PLAYER2T1_SCORE, score.getPlayer2T1Score());
+        intent.putExtra(EndFrameMultiActivity.PLAYER1T2_SCORE, score.getPlayer1T2Score());
+        intent.putExtra(EndFrameMultiActivity.PLAYER2T2_SCORE, score.getPlayer2T2Score());
+
+        intent.putExtra(EndFrameMultiActivity.TEAM1_SCORE, score.getTeam1Score());
+        intent.putExtra(EndFrameMultiActivity.TEAM2_SCORE, score.getTeam2Score());
+
+        intent.putExtra(EndFrameMultiActivity.PLAYER1T1_IMAGE, p1t1Image);
+        intent.putExtra(EndFrameMultiActivity.PLAYER2T1_IMAGE, p2t1Image);
+        intent.putExtra(EndFrameMultiActivity.PLAYER1T2_IMAGE, p1t2Image);
+        intent.putExtra(EndFrameMultiActivity.PLAYER2T2_IMAGE, p2t2Image);
+
+        // TODO pass the images
+        startActivity(intent);
+        // TODO
     }
 
     private void setScoreText(TextView v, int score){
         v.setText(String.format(Locale.US, "%d", score));
     }
+
+
+    private void checkGameEnded(){
+        if(score.checkGameEnded())
+            endGame();
+    }
+
 
 
     private void setButtons() {

@@ -33,7 +33,9 @@
         <activity
             android:name=".EndFrameSingleActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".EndFrameMultiActivity"></activity>
+        <activity
+            android:name=".EndFrameMultiActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

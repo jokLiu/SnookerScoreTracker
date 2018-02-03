@@ -145,17 +145,18 @@ public class EndFrameMultiActivity extends AppCompatActivity {
         setTextView(p2loser, R.id.p4t2_name);
         setTextView(Integer.toString(scoreWin), R.id.team1_score);
         setTextView(Integer.toString(scoreLost), R.id.team2_score);
-        setImageView(p1winnerImage, R.id.p1t1);
-        setImageView(p2winnerImage, R.id.p2t1);
-        setImageView(p1loserImage, R.id.p3t2);
-        setImageView(p2loserImage, R.id.p4t2);
+        setImageView(p1winnerImage, R.id.p1t1, false);
+        setImageView(p2winnerImage, R.id.p2t1, false);
+        setImageView(p1loserImage, R.id.p3t2, true);
+        setImageView(p2loserImage, R.id.p4t2, true);
     }
 
-    private void setImageView(byte[] image, int imgID) {
+    private void setImageView(byte[] image, int imgID, boolean blur) {
         if (image != null) {
             Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
             ImageView imgView = findViewById(imgID);
             imgView.setImageBitmap(bmp);
+            if(blur) imgView.setAlpha(0.5f);
         }
     }
 

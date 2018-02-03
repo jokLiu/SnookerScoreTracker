@@ -1,8 +1,12 @@
 package com.example.jokubas.snookertracker_1601768;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -44,6 +48,7 @@ public class EndFrameSingleActivity extends AppCompatActivity {
         ImageView imageWin = findViewById(R.id.win_img);
         ImageView imageLost = findViewById(R.id.lost_img);
 
+
         if (p1score > p2score) {
             nameWinner.setText(p1name);
             scoreWinner.setText(Integer.toString(p1score));
@@ -54,6 +59,7 @@ public class EndFrameSingleActivity extends AppCompatActivity {
             scoreLoser.setText(Integer.toString(p2score));
             Bitmap bmp2 = BitmapFactory.decodeByteArray(p2Image, 0, p2Image.length);
             imageLost.setImageBitmap(bmp2);
+            imageLost.setAlpha(0.5f);
 
         } else {
             nameWinner.setText(p2name);
@@ -65,6 +71,7 @@ public class EndFrameSingleActivity extends AppCompatActivity {
             scoreLoser.setText(Integer.toString(p1score));
             Bitmap bmp2 = BitmapFactory.decodeByteArray(p1Image, 0, p1Image.length);
             imageLost.setImageBitmap(bmp2);
+            imageLost.setAlpha(0.5f);
         }
 
         Button exit = findViewById(R.id.exit_button);

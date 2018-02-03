@@ -19,18 +19,23 @@ public class EndFrameSingleActivity extends AppCompatActivity {
     public static String PLAYER1_IMAGE = "player1Image";
     public static String PLAYER2_IMAGE = "player2Image";
 
+    private byte[] p1Image;
+    private byte[] p2Image;
+    private String p1name;
+    private String p2name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_frame_single);
 
         Intent intent = getIntent();
-        String p1name = intent.getStringExtra(PLAYER1_NAME);
-        String p2name = intent.getStringExtra(PLAYER2_NAME);
+        p1name = intent.getStringExtra(PLAYER1_NAME);
+        p2name = intent.getStringExtra(PLAYER2_NAME);
         int p1score = intent.getIntExtra(PLAYER1_SCORE, 0);
         int p2score = intent.getIntExtra(PLAYER2_SCORE, 0);
-        byte[] p1Image = intent.getByteArrayExtra(PLAYER1_IMAGE);
-        byte[] p2Image = intent.getByteArrayExtra(PLAYER2_IMAGE);
+        p1Image = intent.getByteArrayExtra(PLAYER1_IMAGE);
+        p2Image = intent.getByteArrayExtra(PLAYER2_IMAGE);
 
         TextView nameWinner = findViewById(R.id.winner);
         TextView nameLoser = findViewById(R.id.loser);
@@ -42,23 +47,23 @@ public class EndFrameSingleActivity extends AppCompatActivity {
         if (p1score > p2score) {
             nameWinner.setText(p1name);
             scoreWinner.setText(Integer.toString(p1score));
-            Bitmap bmp1 = BitmapFactory.decodeByteArray(p1Image , 0, p1Image.length);
+            Bitmap bmp1 = BitmapFactory.decodeByteArray(p1Image, 0, p1Image.length);
             imageWin.setImageBitmap(bmp1);
 
             nameLoser.setText(p2name);
             scoreLoser.setText(Integer.toString(p2score));
-            Bitmap bmp2 = BitmapFactory.decodeByteArray(p2Image , 0, p2Image.length);
+            Bitmap bmp2 = BitmapFactory.decodeByteArray(p2Image, 0, p2Image.length);
             imageLost.setImageBitmap(bmp2);
 
         } else {
             nameWinner.setText(p2name);
             scoreWinner.setText(Integer.toString(p2score));
-            Bitmap bmp1 = BitmapFactory.decodeByteArray(p2Image , 0, p2Image.length);
+            Bitmap bmp1 = BitmapFactory.decodeByteArray(p2Image, 0, p2Image.length);
             imageWin.setImageBitmap(bmp1);
 
             nameLoser.setText(p1name);
             scoreLoser.setText(Integer.toString(p1score));
-            Bitmap bmp2 = BitmapFactory.decodeByteArray(p1Image , 0, p1Image.length);
+            Bitmap bmp2 = BitmapFactory.decodeByteArray(p1Image, 0, p1Image.length);
             imageLost.setImageBitmap(bmp2);
         }
 
@@ -75,12 +80,19 @@ public class EndFrameSingleActivity extends AppCompatActivity {
             }
         });
 
-        Button playAgain = findViewById(R.id.play_again);
-        playAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(EndFrameSingleActivity.this, MainGameActivity.class));
-            }
-        });
+
+    }
+
+
+    public void onClickPlayAgainSingle(View v) {
+        Intent intent = new Intent(EndFrameSingleActivity.this, MainGameActivity.class);
+
+        intent.putExtra(Input2PlayersNamesActivity.name1, p1name);
+        intent.putExtra(Input2PlayersNamesActivity.name2, p2name);
+
+        intent.putExtra(Input2PlayersNamesActivity.image1, p1Image);
+        intent.putExtra(Input2PlayersNamesActivity.image2, p2Image);
+
+        startActivity(intent);
     }
 }

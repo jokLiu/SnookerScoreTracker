@@ -87,7 +87,7 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
                 ImageView imageView = findViewById(id);
-                bitmap = Bitmap.createScaledBitmap(bitmap, imageView.getWidth(), imageView.getHeight(), true);
+                bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
                 imageView.setImageBitmap(bitmap);
 
                 switch (id) {

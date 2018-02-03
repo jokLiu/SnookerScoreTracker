@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -41,6 +42,11 @@ public class EndFrameMultiActivity extends AppCompatActivity {
     private byte[] p1t2Image;
     private byte[] p2t2Image;
 
+    private String p1t1name;
+    private String p2t1name;
+    private String p1t2name;
+    private String p2t2name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,10 +56,10 @@ public class EndFrameMultiActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         // get players names from the game
-        String p1t1name = intent.getStringExtra(PLAYER1T1_NAME);
-        String p2t1name = intent.getStringExtra(PLAYER2T1_NAME);
-        String p1t2name = intent.getStringExtra(PLAYER1T2_NAME);
-        String p2t2name = intent.getStringExtra(PLAYER2T2_NAME);
+        p1t1name = intent.getStringExtra(PLAYER1T1_NAME);
+        p2t1name = intent.getStringExtra(PLAYER2T1_NAME);
+        p1t2name = intent.getStringExtra(PLAYER1T2_NAME);
+        p2t2name = intent.getStringExtra(PLAYER2T2_NAME);
 
         // get players scores from the game
         int p1t1score = intent.getIntExtra(PLAYER1T1_SCORE, 0);
@@ -105,14 +111,27 @@ public class EndFrameMultiActivity extends AppCompatActivity {
             }
         });
 
-        // setup the play again button listener
-        Button playAgain = findViewById(R.id.play_again2);
-        playAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(EndFrameMultiActivity.this, MainGameMultiActivity.class));
-            }
-        });
+
+    }
+
+    public void onClickPlayAgain(View v){
+        Intent intent = new Intent(EndFrameMultiActivity.this, MainGameMultiActivity.class);
+
+        intent.putExtra(Input4PlayersNamesActivity.name1, p1t1name);
+        intent.putExtra(Input4PlayersNamesActivity.name2, p2t1name);
+        intent.putExtra(Input4PlayersNamesActivity.name3, p1t2name);
+        intent.putExtra(Input4PlayersNamesActivity.name4, p2t2name);
+
+        addImage(intent, p1t1Image, Input4PlayersNamesActivity.imagep1t1);
+        addImage(intent, p2t1Image, Input4PlayersNamesActivity.imagep2t1);
+        addImage(intent, p1t2Image, Input4PlayersNamesActivity.imagep1t2);
+        addImage(intent, p2t2Image, Input4PlayersNamesActivity.imagep2t2);
+
+        startActivity(intent);
+    }
+
+    private void addImage(Intent intent, byte[] image, String extraName) {
+        intent.putExtra(extraName, image);
     }
 
     private void setTeams(String p1winner, String p2winner,

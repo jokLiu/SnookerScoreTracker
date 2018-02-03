@@ -320,7 +320,8 @@
         android:layout_height="50dp"
         android:layout_alignBottom="@+id/exit_button2"
         android:layout_alignEnd="@+id/p4t2_name"
-        android:background="@drawable/play_again_selector" />
+        android:background="@drawable/play_again_selector"
+        android:onClick="onClickPlayAgain"/>
 
 
 </RelativeLayout>

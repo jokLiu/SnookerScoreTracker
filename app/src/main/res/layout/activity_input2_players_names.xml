@@ -113,5 +113,31 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/sticks" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imagep2t2"
+        android:layout_below="@+id/imageView5"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="54dp"
+        android:background="@null"
+        android:lines="2"
+        android:maxLines="2"
+        android:gravity="center_horizontal"
+        android:text="Upload Photo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/imagep1t2"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="38dp"
+        android:background="@null"
+        android:gravity="center_horizontal"
+        android:text="Upload Photo" />
+
 
 </RelativeLayout>

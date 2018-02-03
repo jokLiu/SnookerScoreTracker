@@ -93,9 +93,11 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.imagep1t2:
                         p1Image = bitmap;
+                        findViewById(R.id.textView2).setVisibility(View.INVISIBLE);
                         break;
                     case R.id.imagep2t2:
                         p2Image = bitmap;
+                        findViewById(R.id.textView).setVisibility(View.INVISIBLE);
                         break;
                 }
             } catch (FileNotFoundException e) {

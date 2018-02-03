@@ -107,15 +107,19 @@ public class Input4PlayersNamesActivity extends AppCompatActivity {
                 switch (id) {
                     case R.id.imagep1t1:
                         p1T1Image = bitmap;
+                        findViewById(R.id.upload).setVisibility(View.INVISIBLE);
                         break;
                     case R.id.imagep2t1:
                         p2T1Image = bitmap;
+                        findViewById(R.id.upload2).setVisibility(View.INVISIBLE);
                         break;
                     case R.id.imagep1t2:
                         p1T2Image = bitmap;
+                        findViewById(R.id.upload3).setVisibility(View.INVISIBLE);
                         break;
                     case R.id.imagep2t2:
                         p2T2Image = bitmap;
+                        findViewById(R.id.upload4).setVisibility(View.INVISIBLE);
                         break;
                 }
             } catch (FileNotFoundException e) {

@@ -15,24 +15,69 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * The type End frame multi activity.
+ */
 public class EndFrameMultiActivity extends AppCompatActivity {
 
+    /**
+     * The constant PLAYER1T1_NAME.
+     */
     public static String PLAYER1T1_NAME = "player1t1";
+    /**
+     * The constant PLAYER2T1_NAME.
+     */
     public static String PLAYER2T1_NAME = "player2t1";
+    /**
+     * The constant PLAYER1T2_NAME.
+     */
     public static String PLAYER1T2_NAME = "player1t2";
+    /**
+     * The constant PLAYER2T2_NAME.
+     */
     public static String PLAYER2T2_NAME = "player2t2";
 
+    /**
+     * The constant PLAYER1T1_SCORE.
+     */
     public static String PLAYER1T1_SCORE = "player1t1Score";
+    /**
+     * The constant PLAYER2T1_SCORE.
+     */
     public static String PLAYER2T1_SCORE = "player2t1Score";
+    /**
+     * The constant PLAYER1T2_SCORE.
+     */
     public static String PLAYER1T2_SCORE = "player1t2Score";
+    /**
+     * The constant PLAYER2T2_SCORE.
+     */
     public static String PLAYER2T2_SCORE = "player2t2Score";
 
+    /**
+     * The constant TEAM1_SCORE.
+     */
     public static String TEAM1_SCORE = "team1Score";
+    /**
+     * The constant TEAM2_SCORE.
+     */
     public static String TEAM2_SCORE = "team2Score";
 
+    /**
+     * The constant PLAYER1T1_IMAGE.
+     */
     public static String PLAYER1T1_IMAGE = "player1t1Image";
+    /**
+     * The constant PLAYER2T1_IMAGE.
+     */
     public static String PLAYER2T1_IMAGE = "player2t1Image";
+    /**
+     * The constant PLAYER1T2_IMAGE.
+     */
     public static String PLAYER1T2_IMAGE = "player1t2Image";
+    /**
+     * The constant PLAYER2T2_IMAGE.
+     */
     public static String PLAYER2T2_IMAGE = "player2t2Image";
 
     private byte[] p1t1Image;
@@ -101,7 +146,6 @@ public class EndFrameMultiActivity extends AppCompatActivity {
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO fix exit
                 finish();
                 Intent exitIntent = new Intent(Intent.ACTION_MAIN);
                 exitIntent.addCategory(Intent.CATEGORY_HOME);
@@ -113,25 +157,37 @@ public class EndFrameMultiActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * On click play again single game.
+     * all the images and names are passed to the game.
+     *
+     * @param v the view
+     */
     public void onClickPlayAgain(View v) {
         Intent intent = new Intent(EndFrameMultiActivity.this, MainGameMultiActivity.class);
 
-        intent.putExtra(Input4PlayersNamesActivity.name1, p1t1name);
-        intent.putExtra(Input4PlayersNamesActivity.name2, p2t1name);
-        intent.putExtra(Input4PlayersNamesActivity.name3, p1t2name);
-        intent.putExtra(Input4PlayersNamesActivity.name4, p2t2name);
+        intent.putExtra(Input4PlayersNamesActivity.P_NAME1, p1t1name);
+        intent.putExtra(Input4PlayersNamesActivity.P_NAME2, p2t1name);
+        intent.putExtra(Input4PlayersNamesActivity.P_NAME3, p1t2name);
+        intent.putExtra(Input4PlayersNamesActivity.P_NAME4, p2t2name);
 
-        addImage(intent, p1t1Image, Input4PlayersNamesActivity.imagep1t1);
-        addImage(intent, p2t1Image, Input4PlayersNamesActivity.imagep2t1);
-        addImage(intent, p1t2Image, Input4PlayersNamesActivity.imagep1t2);
-        addImage(intent, p2t2Image, Input4PlayersNamesActivity.imagep2t2);
+        addImage(intent, p1t1Image, Input4PlayersNamesActivity.P1T1_IMAGE);
+        addImage(intent, p2t1Image, Input4PlayersNamesActivity.P2T1_IMAGE);
+        addImage(intent, p1t2Image, Input4PlayersNamesActivity.P1T2_IMAGE);
+        addImage(intent, p2t2Image, Input4PlayersNamesActivity.P2T2_IMAGE);
 
         startActivity(intent);
     }
 
+    /**
+     * @param intent    to the main game activity.
+     * @param image     image to be added as extra.
+     * @param extraName string for the extra image name.
+     */
     private void addImage(Intent intent, byte[] image, String extraName) {
         intent.putExtra(extraName, image);
     }
+
 
     private void setTeams(String p1winner, String p2winner,
                           String p1loser, String p2loser,
@@ -151,20 +207,36 @@ public class EndFrameMultiActivity extends AppCompatActivity {
         setImageView(p2loserImage, R.id.p4t2, true);
     }
 
+    /**
+     *
+     * @param image the image to be set
+     * @param imgID id for the view
+     * @param blur the boolean to determine if the image should be blured
+     */
     private void setImageView(byte[] image, int imgID, boolean blur) {
         if (image != null) {
             Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
             ImageView imgView = findViewById(imgID);
             imgView.setImageBitmap(bmp);
-            if(blur) imgView.setAlpha(0.5f);
+            if (blur) imgView.setAlpha(0.5f);
         }
     }
 
+    /**
+     *
+     * @param text the text to be set
+     * @param textID the view id
+     */
     private void setTextView(String text, int textID) {
         TextView view = findViewById(textID);
         view.setText(text);
     }
 
+    /**
+     * Sets the leaders based on their individual score
+     * 
+     * @param players of the game
+     */
     private void setLeaders(List<PlayerWrapper> players) {
         Collections.sort(players, Collections.<PlayerWrapper>reverseOrder());
         List<TextView> names = new ArrayList<>();
@@ -188,10 +260,25 @@ public class EndFrameMultiActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Inner class for wrapping up the player information.
+     */
     private class PlayerWrapper implements Comparable {
+        /**
+         * The Name.
+         */
         String name;
+        /**
+         * The Score.
+         */
         int score;
 
+        /**
+         * Instantiates a new Player wrapper.
+         *
+         * @param name  the name
+         * @param score the score
+         */
         public PlayerWrapper(String name, int score) {
             this.name = name;
             this.score = score;

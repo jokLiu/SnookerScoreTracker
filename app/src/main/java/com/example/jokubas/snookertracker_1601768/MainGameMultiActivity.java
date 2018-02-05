@@ -12,8 +12,12 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+/**
+ * The type Main game multi activity.
+ */
 public class MainGameMultiActivity extends AppCompatActivity {
 
+    /* the views to record for players selections */
     private ScoreTrackMulti score;
     private TextView p1T1Score;
     private TextView p2T1Score;
@@ -34,22 +38,22 @@ public class MainGameMultiActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         // Get the players names from previous activity
-        String pName1 = intent.getStringExtra(Input4PlayersNamesActivity.name1);
-        String pName2 = intent.getStringExtra(Input4PlayersNamesActivity.name2);
-        String pName3 = intent.getStringExtra(Input4PlayersNamesActivity.name3);
-        String pName4 = intent.getStringExtra(Input4PlayersNamesActivity.name4);
+        String pName1 = intent.getStringExtra(Input4PlayersNamesActivity.P_NAME1);
+        String pName2 = intent.getStringExtra(Input4PlayersNamesActivity.P_NAME2);
+        String pName3 = intent.getStringExtra(Input4PlayersNamesActivity.P_NAME3);
+        String pName4 = intent.getStringExtra(Input4PlayersNamesActivity.P_NAME4);
 
         // get the text views of players' names from the current activity
-        TextView n1 = (TextView) findViewById(R.id.player1_name);
-        TextView n2 = (TextView) findViewById(R.id.player2_name);
-        TextView n3 = (TextView) findViewById(R.id.player3_name);
-        TextView n4 = (TextView) findViewById(R.id.player4_name);
+        TextView n1 = findViewById(R.id.player1_name);
+        TextView n2 = findViewById(R.id.player2_name);
+        TextView n3 = findViewById(R.id.player3_name);
+        TextView n4 = findViewById(R.id.player4_name);
 
         // get the images
-        p1t1Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.imagep1t1);
-        p2t1Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.imagep2t1);
-        p1t2Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.imagep1t2);
-        p2t2Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.imagep2t2);
+        p1t1Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.P1T1_IMAGE);
+        p2t1Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.P2T1_IMAGE);
+        p1t2Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.P1T2_IMAGE);
+        p2t2Image = intent.getByteArrayExtra(Input4PlayersNamesActivity.P2T2_IMAGE);
 
         // set the images received
         setImageView(p1t1Image, R.id.p1_t1_image);
@@ -58,39 +62,41 @@ public class MainGameMultiActivity extends AppCompatActivity {
         setImageView(p2t2Image, R.id.p4_t2_image);
 
         // set players names received
-        // TODO If players names are empty leave the current names
-        // TODO fix play again
-        // maybe create helper method for this
-        if (!pName1.equals(""))
-            n1.setText(pName1);
-        if (!pName2.equals(""))
-            n2.setText(pName2);
-        if (!pName3.equals(""))
-            n3.setText(pName3);
-        if (!pName4.equals(""))
-            n4.setText(pName4);
+        n1.setText(pName1);
+        n2.setText(pName2);
+        n3.setText(pName3);
+        n4.setText(pName4);
 
-        p1T1Score = (TextView) findViewById(R.id.score1_tm1);
-        p2T1Score = (TextView) findViewById(R.id.score2_tm1);
-        p3T2Score = (TextView) findViewById(R.id.score3_tm2);
-        p4T2Score = (TextView) findViewById(R.id.score4_tm2);
-        t1Score = (TextView) findViewById(R.id.score_tm1);
-        t2Score = (TextView) findViewById(R.id.score_tm2);
+        // get a views to display the results
+        p1T1Score = findViewById(R.id.score1_tm1);
+        p2T1Score = findViewById(R.id.score2_tm1);
+        p3T2Score = findViewById(R.id.score3_tm2);
+        p4T2Score = findViewById(R.id.score4_tm2);
+        t1Score = findViewById(R.id.score_tm1);
+        t2Score = findViewById(R.id.score_tm2);
 
-        // TODO names might be empty
+        // create a score tracker
         score = new ScoreTrackMulti(pName1, pName2, pName3, pName4);
 
+        // set up the initial display
         setRedBallsView();
         setPlayers();
         setButtons();
     }
 
+    /**
+     * change the number of red balls in the layout
+     */
     private void setRedBallsView() {
         int n = score.getNumberOfReds();
         setScoreText((TextView) findViewById(R.id.counterView), n);
     }
 
 
+    /**
+     * @param image to be set in the layout
+     * @param imgID the id of the view
+     */
     private void setImageView(byte[] image, int imgID) {
         if (image != null) {
             Bitmap bmp = BitmapFactory.decodeByteArray(image, 0, image.length);
@@ -99,6 +105,11 @@ public class MainGameMultiActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * On click update the scores depending on the button pressed.
+     *
+     * @param v the v
+     */
     public void onClick(View v) {
 
         switch (v.getId()) {
@@ -137,6 +148,7 @@ public class MainGameMultiActivity extends AppCompatActivity {
 
         }
 
+        // update the views
         setScoreText(p1T1Score, score.getPlayer1T1Score());
         setScoreText(p2T1Score, score.getPlayer2T1Score());
         setScoreText(p3T2Score, score.getPlayer1T2Score());
@@ -149,6 +161,9 @@ public class MainGameMultiActivity extends AppCompatActivity {
         checkGameEnded();
     }
 
+    /**
+     * When the game is ended pass all the information to the next activity.
+     */
     private void endGame() {
         Intent intent = new Intent(MainGameMultiActivity.this, EndFrameMultiActivity.class);
         intent.putExtra(EndFrameMultiActivity.PLAYER1T1_NAME, score.getPlayer1T1Name());
@@ -169,22 +184,32 @@ public class MainGameMultiActivity extends AppCompatActivity {
         intent.putExtra(EndFrameMultiActivity.PLAYER1T2_IMAGE, p1t2Image);
         intent.putExtra(EndFrameMultiActivity.PLAYER2T2_IMAGE, p2t2Image);
 
-        // TODO pass the images
         startActivity(intent);
-        // TODO
     }
 
+    /**
+     * Score to be set in the layout
+     *
+     * @param v     the view
+     * @param score the score
+     */
     private void setScoreText(TextView v, int score) {
         v.setText(String.format(Locale.US, "%d", score));
     }
 
 
+    /**
+     * check if the game ended.
+     */
     private void checkGameEnded() {
         if (score.checkGameEnded())
             endGame();
     }
 
-
+    /**
+     * set active and non-active buttons based
+     * on the current state of the game.
+     */
     private void setButtons() {
         boolean[] balls = score.getAvailableBalls();
         if (balls.length < 8) return;
@@ -206,12 +231,15 @@ public class MainGameMultiActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * set the player images.
+     * blur is applied to non-active players
+     */
     private void setPlayers() {
         int id = score.mapTurnToPlayerImageID();
 
         // player 1 team 1 image
-        ImageView im = (ImageView) findViewById(R.id.p1_t1_image);
+        ImageView im = findViewById(R.id.p1_t1_image);
         if (R.id.p1_t1_image == id) {
             im.setAlpha(1f);
         } else {
@@ -219,7 +247,7 @@ public class MainGameMultiActivity extends AppCompatActivity {
         }
 
         // player 2 team 1 image
-        im = (ImageView) findViewById(R.id.p2_t1_image);
+        im = findViewById(R.id.p2_t1_image);
         if (R.id.p2_t1_image == id) {
             im.setAlpha(1f);
         } else {
@@ -227,7 +255,7 @@ public class MainGameMultiActivity extends AppCompatActivity {
         }
 
         // player 3 team 2 image
-        im = (ImageView) findViewById(R.id.p3_t2_image);
+        im = findViewById(R.id.p3_t2_image);
         if (R.id.p3_t2_image == id) {
             im.setAlpha(1f);
         } else {
@@ -235,7 +263,7 @@ public class MainGameMultiActivity extends AppCompatActivity {
         }
 
         // player 4 team 2 image
-        im = (ImageView) findViewById(R.id.p4_t2_image);
+        im = findViewById(R.id.p4_t2_image);
         if (R.id.p4_t2_image == id) {
             im.setAlpha(1f);
         } else {

@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+/**
+ * The type Players selection activity.
+ */
 public class PlayersSelectionActivity extends AppCompatActivity {
 
     @Override
@@ -14,15 +17,25 @@ public class PlayersSelectionActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * On 2 players click.
+     * Method is called when a user decides to play 2 player snooker.
+     *
+     * @param view the view
+     */
     public void on2PlayersClick(View view) {
         Intent intent = new Intent(PlayersSelectionActivity.this, Input2PlayersNamesActivity.class);
         startActivity(intent);
-        // Should turn on the window with 2 names to input
     }
 
+    /**
+     * On 4 players click.
+     * Method is called when a user decides to play 4 player snooker.
+     *
+     * @param view the view
+     */
     public void on4PlayersClick(View view) {
         Intent intent = new Intent(PlayersSelectionActivity.this, Input4PlayersNamesActivity.class);
         startActivity(intent);
-        // should turn on the window with 4 names to input
     }
 }

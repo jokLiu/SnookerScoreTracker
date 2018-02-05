@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+/**
+ * The type Main game activity.
+ */
 public class MainGameActivity extends AppCompatActivity {
 
     private ScoreTrackSingle score;
@@ -27,40 +30,54 @@ public class MainGameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String pName1 = intent.getStringExtra(Input2PlayersNamesActivity.name1);
-        String pName2 = intent.getStringExtra(Input2PlayersNamesActivity.name2);
+        // Get the players names from previous activity
+        String pName1 = intent.getStringExtra(Input2PlayersNamesActivity.P_NAME1);
+        String pName2 = intent.getStringExtra(Input2PlayersNamesActivity.P_NAME2);
 
+        // get the images
         player1Image = intent.getByteArrayExtra(Input2PlayersNamesActivity.image1);
         player2Image = intent.getByteArrayExtra(Input2PlayersNamesActivity.image2);
 
+        // set the images received
         if (player1Image != null) {
             Bitmap bmp1 = BitmapFactory.decodeByteArray(player1Image, 0, player1Image.length);
             ImageView imgView1 = findViewById(R.id.p1_image);
             imgView1.setImageBitmap(bmp1);
         }
 
+        // set the images received
         if (player2Image != null) {
             Bitmap bmp2 = BitmapFactory.decodeByteArray(player2Image, 0, player2Image.length);
             ImageView imgView2 = findViewById(R.id.p2_image);
             imgView2.setImageBitmap(bmp2);
         }
 
-        TextView n1 = (TextView) findViewById(R.id.player1_name);
-        TextView n2 = (TextView) findViewById(R.id.player3_name);
+        // get the text views of players' names from the current activity
+        TextView n1 = findViewById(R.id.player1_name);
+        TextView n2 = findViewById(R.id.player3_name);
 
+        // set players names received
         n1.setText(pName1);
         n2.setText(pName2);
 
-        p1score = (TextView) findViewById(R.id.score2_tm1);
-        p2score = (TextView) findViewById(R.id.score3_tm2);
+        // get a views to display the results
+        p1score = findViewById(R.id.score2_tm1);
+        p2score = findViewById(R.id.score3_tm2);
 
+        // create a score tracker
         score = new ScoreTrackSingle(pName1, pName2);
 
+        // set up the initial display
         setPlayers();
         setButtons();
         setRedBallsView();
     }
 
+    /**
+     * On click.
+     *
+     * @param v the v
+     */
     public void onClick(View v) {
 
         switch (v.getId()) {
@@ -107,6 +124,10 @@ public class MainGameActivity extends AppCompatActivity {
         checkGameEnded();
     }
 
+    /**
+     * set active and non-active buttons based
+     * on the current state of the game.
+     */
     private void setButtons() {
         boolean[] balls = score.getAvailableBalls();
         if (balls.length < 8) return;
@@ -128,21 +149,36 @@ public class MainGameActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * change the number of red balls in the layout
+     */
     private void setRedBallsView() {
         int n = score.getNumberOfReds();
         setScoreText((TextView) findViewById(R.id.counterViewSingle), n);
     }
 
+    /**
+     * Score to be set in the layout
+     *
+     * @param v     the view
+     * @param score the score
+     */
     private void setScoreText(TextView v, int score) {
         v.setText(String.format(Locale.US, "%d", score));
     }
 
 
+    /**
+     * check if the game ended.
+     */
     private void checkGameEnded() {
         if (score.checkGameEnded())
             endGame();
     }
 
+    /**
+     * When the game is ended pass all the information to the next activity.
+     */
     private void endGame() {
         Intent intent = new Intent(MainGameActivity.this, EndFrameSingleActivity.class);
         intent.putExtra(EndFrameSingleActivity.PLAYER1_NAME, score.getPlayer1T1Name());
@@ -151,12 +187,13 @@ public class MainGameActivity extends AppCompatActivity {
         intent.putExtra(EndFrameSingleActivity.PLAYER2_SCORE, score.getPlayer1T2Score());
         intent.putExtra(EndFrameSingleActivity.PLAYER1_IMAGE, player1Image);
         intent.putExtra(EndFrameSingleActivity.PLAYER2_IMAGE, player2Image);
-
-        // TODO pass the images
         startActivity(intent);
     }
 
-
+    /**
+     * set the player images.
+     * blur is applied to non-active players
+     */
     private void setPlayers() {
         int id = score.mapTurnToPlayerImageID();
 

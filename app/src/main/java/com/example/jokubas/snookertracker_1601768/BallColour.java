@@ -1,9 +1,9 @@
 package com.example.jokubas.snookertracker_1601768;
 
 /**
- * Created by jokubas on 27/01/18.
+ * Enum for keeping track the score of
+ * each ball in the snooker game
  */
-
 public enum BallColour {
     RED(1),
     YELLOW(2),

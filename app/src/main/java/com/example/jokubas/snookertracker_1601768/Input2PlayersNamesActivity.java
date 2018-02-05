@@ -17,12 +17,31 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 
+/**
+ * The type Input 2 players names activity.
+ */
 public class Input2PlayersNamesActivity extends AppCompatActivity {
 
-    public static final String name1 = "pName1";
-    public static final String name2 = "pName2";
+    /**
+     * The constant P_NAME1.
+     */
+    public static final String P_NAME1 = "pName1";
+    /**
+     * The constant P_NAME2.
+     */
+    public static final String P_NAME2 = "pName2";
+    /**
+     * The constant image1.
+     */
     public static final String image1 = "image1";
+    /**
+     * The constant image2.
+     */
     public static final String image2 = "image2";
+
+    /**
+     * The constant GET_FROM_GALLERY.
+     */
     public static final int GET_FROM_GALLERY = 3;
     private int id = 0;
     private Bitmap p1Image = null;
@@ -35,33 +54,46 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input2_players_names);
 
+        // get the initial images from the resources
         p1Image = BitmapFactory.decodeResource(getResources(),  R.drawable.p1);
-
         p2Image = BitmapFactory.decodeResource(getResources(),  R.drawable.p2);
 
+        // init array for recording image extensions for later compression
         extensions = new String[2];
         Arrays.fill(extensions, "");
     }
 
+    /**
+     * On click play.
+     * When play button is clicked the game recording is started.
+     *
+     * @param v the view
+     */
     public void onClickPlay(View v) {
-        // call the main function for playing the game
-        // which contains the grid of all buttons and scores
         Intent intent = new Intent(Input2PlayersNamesActivity.this, MainGameActivity.class);
 
-        putExtraName(intent, (EditText)findViewById(R.id.name1), name1);
-        putExtraName(intent, (EditText)findViewById(R.id.name2), name2);
+        // pass the names which were input by the user
+        putExtraName(intent, (EditText)findViewById(R.id.name1), P_NAME1);
+        putExtraName(intent, (EditText)findViewById(R.id.name2), P_NAME2);
 
-
+        // pass the images which were uploaded by the user
         addImage(intent, p1Image, image1, extensions[0]);
         addImage(intent, p2Image, image2, extensions[1]);
 
         startActivity(intent);
     }
 
+    /**
+     *
+     * @param intent to the main game activity.
+     * @param image image to be added as extra.
+     * @param extraName string for the extra image name.
+     * @param extension image extension for the image compression.
+     */
     private void addImage(Intent intent, Bitmap image, String extraName, String extension) {
         if (image == null) return;
-
         intent.putExtra(extraName, image);
+
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         if(extension.equals(".jpg"))
             image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
@@ -72,6 +104,12 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
         intent.putExtra(extraName, b);
     }
 
+    /**
+     * On click browse photo.
+     * Upload avatar photos of the users.
+     *
+     * @param view the view
+     */
     public void onClickBrowsePhoto(View view) {
         id = view.getId();
         startActivityForResult(new Intent(Intent.ACTION_PICK,
@@ -79,6 +117,12 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
                 GET_FROM_GALLERY);
     }
 
+    /**
+     *
+     * @param intent  to the main game activity.
+     * @param textView player name to be added.
+     * @param extraName string for the extra text name.
+     */
     private void putExtraName(Intent intent, EditText textView, String extraName){
         String text = textView.getText().toString();
         if(text.equals(""))
@@ -90,8 +134,7 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-
-        //Detects request codes
+        // After the image was loaded process it
         if (requestCode == GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
             Uri selectedImage = data.getData();
             Bitmap bitmap = null;
@@ -101,6 +144,7 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
                 bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
                 imageView.setImageBitmap(bitmap);
 
+                // record the image selected
                 int imgIdx = -1;
                 switch (id) {
                     case R.id.imagep1t2:
@@ -115,6 +159,7 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
                         break;
                 }
 
+                // get the current image extension for later compression
                 String[] filePathColumn = {MediaStore.Images.Media.DATA};
                 Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                 if (cursor.moveToFirst() && imgIdx >= 0) {

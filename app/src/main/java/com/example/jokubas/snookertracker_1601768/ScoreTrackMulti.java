@@ -3,7 +3,6 @@ package com.example.jokubas.snookertracker_1601768;
 /**
  * Created by jokubas on 31/01/18.
  */
-
 public class ScoreTrackMulti extends ScoreTrack {
 
 
@@ -14,7 +13,14 @@ public class ScoreTrackMulti extends ScoreTrack {
     private String player2T1;
     private String player2T2;
 
-
+    /**
+     * Instantiates a new Score track multi.
+     *
+     * @param player1_team1 the player 1 team 1 name
+     * @param player2_team1 the player 2 team 1 name
+     * @param player1_team2 the player 1 team 2 name
+     * @param player2_team2 the player 2 team 2 name
+     */
     public ScoreTrackMulti(String player1_team1, String player2_team1,
                            String player1_team2, String player2_team2) {
         super();
@@ -38,26 +44,56 @@ public class ScoreTrackMulti extends ScoreTrack {
         return player1_team2Score;
     }
 
+    /**
+     * Gets player 2 team 1 score.
+     *
+     * @return the player 2 team 1 score
+     */
     public int getPlayer2T1Score() {
         return player2_team1Score;
     }
 
+    /**
+     * Gets player 2 team 2 score.
+     *
+     * @return the player 2 team 2 score
+     */
     public int getPlayer2T2Score() {
         return player2_team2Score;
     }
 
+    /**
+     * Gets team 1 score.
+     *
+     * @return the team 1 score
+     */
     public int getTeam1Score() {
         return team1Score;
     }
 
+    /**
+     * Gets team 2 score.
+     *
+     * @return the team 2 score
+     */
     public int getTeam2Score() {
         return team2Score;
     }
 
+    /**
+     * Gets player 2 team 1 name.
+     *
+     * @return the player 2 team 1 name
+     */
     public String getPlayer2T1Name() {
         return player2T1;
     }
 
+    /**
+     * Gets player 2 team 2 name.
+     *
+     * @return the player 2 team 2 name
+     */
     public String getPlayer2T2Name() {
         return player2T2;
     }

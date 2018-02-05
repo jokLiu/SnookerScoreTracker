@@ -3,10 +3,15 @@ package com.example.jokubas.snookertracker_1601768;
 /**
  * Created by jokubas on 27/01/18.
  */
-
 public class ScoreTrackSingle extends ScoreTrack {
 
 
+    /**
+     * Instantiates a new Score track single.
+     *
+     * @param player1 the player 1 name
+     * @param player2 the player 2 name
+     */
     public ScoreTrackSingle(String player1, String player2) {
         super();
         this.player1T1 = player1;

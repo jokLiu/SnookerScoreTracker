@@ -96,9 +96,9 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         if(extension.equals(".jpg"))
-            image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            image.compress(Bitmap.CompressFormat.JPEG, 50, baos);
         else
-            image.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            image.compress(Bitmap.CompressFormat.PNG, 50, baos);
         byte[] b = baos.toByteArray();
 
         intent.putExtra(extraName, b);
@@ -141,7 +141,7 @@ public class Input2PlayersNamesActivity extends AppCompatActivity {
             try {
                 bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
                 ImageView imageView = findViewById(id);
-                bitmap = Bitmap.createScaledBitmap(bitmap, 150, 150, true);
+                bitmap = Bitmap.createScaledBitmap(bitmap, imageView.getWidth(), imageView.getHeight(), true);
                 imageView.setImageBitmap(bitmap);
 
                 // record the image selected

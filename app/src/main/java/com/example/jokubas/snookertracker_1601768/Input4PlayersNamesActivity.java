@@ -129,9 +129,10 @@ public class Input4PlayersNamesActivity extends AppCompatActivity {
         intent.putExtra(extraName, image);
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         if (extension.equals(".jpg"))
-            image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+            image.compress(Bitmap.CompressFormat.JPEG, 50, baos);
         else
-            image.compress(Bitmap.CompressFormat.PNG, 100, baos);
+            image.compress(Bitmap.CompressFormat.PNG, 50, baos);
+
         byte[] b = baos.toByteArray();
 
         intent.putExtra(extraName, b);

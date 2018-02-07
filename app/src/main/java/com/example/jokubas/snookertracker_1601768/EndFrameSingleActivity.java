@@ -109,7 +109,7 @@ public class EndFrameSingleActivity extends AppCompatActivity {
                 startActivity(exitIntent);
             }
         });
-        
+
     }
 
 

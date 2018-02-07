@@ -314,12 +314,12 @@
 
     <Button
         android:id="@+id/play_again2"
-        android:layout_width="160dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_alignBottom="@+id/exit_button2"
-        android:layout_alignEnd="@+id/p4t2_name"
-        android:background="@drawable/play_again_selector"
-        android:onClick="onClickPlayAgain"/>
+        android:layout_alignStart="@+id/place4_score"
+        android:layout_alignTop="@+id/exit_button2"
+        android:background="@drawable/play_selector"
+        android:onClick="onClickPlayAgain" />
 
 
 </RelativeLayout>

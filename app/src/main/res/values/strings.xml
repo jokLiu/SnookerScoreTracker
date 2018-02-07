@@ -10,4 +10,12 @@
     <string name="two">2</string>
     <string name="three">3</string>
     <string name="four">4</string>
+    <string name="five">5</string>
+    <string name="six">6</string>
+    <string name="seven">7</string>
+    <string name="zero">0</string>
+    <string name="fifteen">15</string>
+    <string name="end">End</string>
+    <string name="next">Next</string>
+    <string name="foul">Foul</string>
 </resources>

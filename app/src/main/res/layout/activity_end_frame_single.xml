@@ -108,13 +108,14 @@
 
     <Button
         android:id="@+id/play_again"
-        android:layout_width="160dp"
+        android:layout_width="100dp"
         android:layout_height="50dp"
-        android:layout_alignEnd="@+id/lose_sign"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="13dp"
-        android:background="@drawable/play_again_selector"
-        android:onClick="onClickPlayAgainSingle"/>
+        android:layout_alignStart="@+id/lose_sign"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/play_selector"
+        android:onClick="onClickPlayAgainSingle" />
 
     <Button
         android:id="@+id/exit_button"
